@@ -1,13 +1,14 @@
 const router = require("express").Router();
 const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
-
-
+const axios = require("axios");
 
 
 router.get("/anime", async (req, res, next) => {
   try {
-    const animes = await Anime.find();
+    const animes =  await axios.get(
+      "https://kitsu.io/api/edge/anime/"
+    );
     res.json({ animes });
   } catch (err) {
     res.status(400).json({
@@ -42,5 +43,6 @@ router.post("/anime", async (req, res) => {
    await user.save();
    res.json("Favourite Anime added");
  });
+ 
 
 module.exports = router;
