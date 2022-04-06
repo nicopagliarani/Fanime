@@ -1,11 +1,17 @@
 const { Schema, model } = require("mongoose");
 const animeSchema = new Schema(
   {
-    canonicalTitle: {
-      type: String,
-      
-    },
+    canonicalTitle:String,
     synopsis: String,
+    averageRating: String,
+    favoritesCount: Number,
+    startDate: String,
+    endDate: String,
+    coverImage: String,
+    episodeCount: Number,
+    episodeLength: Number,
+    youtubeVideoId: String,
+    favoriteAnimes: [],
   },
   
   {
@@ -16,4 +22,4 @@ const animeSchema = new Schema(
 
 const Anime = model("Anime", animeSchema);
 
-module.exports = User;
+module.exports = Anime;
