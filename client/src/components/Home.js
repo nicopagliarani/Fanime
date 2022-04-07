@@ -24,7 +24,12 @@ export function Home() {
   return (
     <>
       {anime.map((element) => {
-        return <h1>{element.attributes.canonicalTitle}</h1>;
+        return (
+          <>
+            <h3>{element.attributes.canonicalTitle}</h3>
+            <img src={element.attributes.posterImage.tiny} alt="anime img" />
+          </>
+        );
       })}
       {console.log(anime)}
     </>
