@@ -26,6 +26,20 @@ module.exports = (app) => {
       origin: process.env.ORIGIN || "http://localhost:3000",
     })
   );
+  //Create session
+  app.use(
+    session({
+      secret: process.env.SESS_SECRET,
+      resave: true,
+      saveUninitialized: false,
+      cookie: {
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        secure: process.env.NODE_ENV === "production",
+        httpOnly: true,
+        maxAge: 600000, // 60 * 1000 ms * 10 === 10 min
+      },
+    })
+  );
 
   // In development environment the app logs
   app.use(logger("dev"));
