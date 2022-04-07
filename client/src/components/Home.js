@@ -1,11 +1,21 @@
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProviderWrapper";
 
 export function Home() {
   const [anime, setAnime] = useState([]);
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log(user);
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -13,14 +23,13 @@ export function Home() {
         const data = response.data;
         setAnime(data.animesData);
       } catch (err) {
+        console.log("We got an error");
+        console.error(err);
         console.log(err.response.data);
-        if (err.response.status === 401) {
-          navigate("/login");
-        }
       }
     };
     fetchData();
-  }, [navigate]);
+  }, []);
   return (
     <>
       {anime.map((element) => {
