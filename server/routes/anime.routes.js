@@ -3,10 +3,14 @@ const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
 const axios = require("axios");
 
-router.get("/anime", async (req, res, next) => {
+router.get("/home", async (req, res, next) => {
   try {
-    const animes = await axios.get("https://kitsu.io/api/edge/anime/");
-    const animesData = animes.data;
+    //const number = Math.floor(Math.random() * 20) + 5;
+    const animes = await axios.get(
+      `https://kitsu.io/api/edge/anime?page[limit]=20`
+    );
+    const animesData = animes.data.data;
+    //console.log(animesData.data);
     res.json({ animesData });
   } catch (err) {
     res.status(400).json({

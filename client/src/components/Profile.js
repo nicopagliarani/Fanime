@@ -8,7 +8,7 @@ export function Profile() {
     try {
       const response = await axios.post(`${API_BASE_URL}/api/logout`);
       console.log(response.data);
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       alert("there was an error logging out");
     }
