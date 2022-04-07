@@ -5,7 +5,6 @@ router.get("/", (req, res, next) => {
 });
 router.use(require("./anime.routes"));
 
-// You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
+router.use(require("./auth.routes"));
 
 module.exports = router;
