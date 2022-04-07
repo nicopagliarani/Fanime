@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Custom404Page } from "./components/Custom404Page";
+import FirstPage from "./components/FirstPage";
 import { Home } from "./components/Home";
 import { LayoutComponent } from "./components/LayoutComponent";
 import { Login } from "./components/Login";
@@ -12,8 +13,8 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<LayoutComponent />}>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/home" element={<Home />} />  */}
+          <Route path="/" element={<FirstPage />} />
+          <Route path="/home" element={<Home />} /> 
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
