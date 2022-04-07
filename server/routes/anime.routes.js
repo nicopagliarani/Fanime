@@ -18,22 +18,32 @@ router.get("/anime", async (req, res, next) => {
   }
 });
 
-router.post("/anime", async (req, res) => {
-  const newAnime = new Anime({
+router.post("/saveanime", async (req, res) => {
+  console.log(req.body);
+  try{const newAnime = await new Anime({
     canonicalTitle: req.body.canonicalTitle,
     synopsis:req.body.synopsis,
     coverImage: req.body.coverImage,
    });
-   await newAnime.save();
+  await newAnime.save();
+  //  console.log(newAnime);
   const userId = req.session.currentUser._id;
-  const user = await User.findById({ _id: userId });
+  // const userId= '624edb94825a668c62728cc8'
+  const user = await User.findById( userId );
   console.log(newAnime._id);
   user.favoriteAnimes.push(newAnime._id);
   await user.save();
   res.json("Favourite Anime added");
+}catch (err) {
+    res.status(400).json({
+      errorMessage: "Error in adding to favorites" + err.message,
+    });
+  }
 });
 
-// router.post("/anime", async (req, res, next) => {
+
+
+// router.post("/createanime", async (req, res, next) => {
 //   try {
 //     const {  canonicalTitle,  synopsis } = req.body;
 //     console.log("Should create a new anime with", canonicalTitle,  synopsis);
@@ -47,7 +57,8 @@ router.post("/anime", async (req, res) => {
 //   }
 // });
 
-router.delete("/anime", async (req, res, next) => {
+router.delete("/deleteanime", async (req, res, next) => {
+  console.log(req.body);
   try {
     const {id} = req.body;
     await Anime.findByIdAndDelete(id);
