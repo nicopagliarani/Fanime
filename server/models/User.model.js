@@ -11,6 +11,10 @@ const userSchema = new Schema(
     type: String,
     required: true, 
   },
+  favoriteAnimes: [{
+    type: Schema.Types.ObjectId,
+    ref: "Anime",
+  },],
 },
 {
   timestamps: true,

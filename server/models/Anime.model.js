@@ -11,7 +11,11 @@ const animeSchema = new Schema(
     episodeCount: Number,
     episodeLength: Number,
     youtubeVideoId: String,
-    favoriteAnimes: [],
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    
   },
   
   {
