@@ -2,12 +2,16 @@ const router = require("express").Router();
 const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
 const axios = require("axios");
+const {
+  isLoggedIn,
+  requireToBeLoggedOut,
+} = require("../middlewares/IsLoggedIn");
 
-router.get("/home", async (req, res, next) => {
+router.get("/home", isLoggedIn, async (req, res, next) => {
   try {
-    //const number = Math.floor(Math.random() * 20) + 5;
+    const number = Math.floor(Math.random() * 20) + 5;
     const animes = await axios.get(
-      `https://kitsu.io/api/edge/anime?page[limit]=20`
+      `https://kitsu.io/api/edge/anime?page[limit]=${number}`
     );
     const animesData = animes.data.data;
     //console.log(animesData.data);

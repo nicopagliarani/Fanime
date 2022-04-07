@@ -10,7 +10,10 @@ export function Profile() {
       console.log(response.data);
       navigate("/");
     } catch (err) {
-      alert("there was an error logging out");
+      console.log(err.response.data);
+      if (err.response.status === 401) {
+        navigate("/login");
+      }
     }
   };
   return (

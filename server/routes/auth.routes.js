@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
+const {
+  isLoggedIn,
+  requireToBeLoggedOut,
+} = require("../middlewares/IsLoggedIn");
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -49,7 +53,5 @@ router.post("/logout", async (req, res, next) => {
     return res.json({ message: "You are Logged Out" });
   });
 });
-
-
 
 module.exports = router;
