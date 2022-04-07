@@ -18,7 +18,7 @@ router.get("/anime", async (req, res, next) => {
   }
 });
 
-router.post("/saveanime", async (req, res) => {
+router.post("/saveFavoriteAnime", async (req, res) => {
   console.log(req.body);
   try{const newAnime = await new Anime({
     canonicalTitle: req.body.canonicalTitle,
@@ -57,7 +57,7 @@ router.post("/saveanime", async (req, res) => {
 //   }
 // });
 
-router.delete("/deleteanime", async (req, res, next) => {
+router.delete("/deleteAnime", async (req, res, next) => {
   console.log(req.body);
   try {
     const {id} = req.body;
