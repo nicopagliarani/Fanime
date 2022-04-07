@@ -14,11 +14,13 @@ router.post("/login", async (req, res, next) => {
     if (!samePassword) {
       throw Error();
     }
-    req.session.user = { username: user.username, _id: user._id };
-    return res.json({ message: "Nice you are logged in" });
+    const sessionUser = { username: user.username, _id: user._id };
+    req.session.user = sessionUser;
+    console.log(req.session);
+    return res.json({ message: "Successfully logged in!", user: sessionUser });
   } catch (err) {
     console.log(err);
-    res.status(400).json({ errorMessage: "Something went wrong!" });
+    res.status(400).json({ errorMessage: "Wrong password or username" });
   }
 });
 
@@ -39,6 +41,13 @@ router.post("/signup", async (req, res, next) => {
     console.log(err);
     return res.status(400).json({ errorMessage: "Something went wrong" });
   }
+});
+
+router.post("/logout", async (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) next(err);
+    return res.json({ message: "You are Logged Out" });
+  });
 });
 
 module.exports = router;
