@@ -8,6 +8,7 @@ export function LayoutComponent() {
         <NavLink to="/profile">Profile</NavLink>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/signup">SignUp</NavLink>
+        <NavLink to="/home/kk">Detail anime page</NavLink>
       </nav>
       <Outlet />
     </div>
