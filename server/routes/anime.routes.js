@@ -2,15 +2,20 @@ const router = require("express").Router();
 const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
 const axios = require("axios");
+const {
+  isLoggedIn,
+  requireToBeLoggedOut,
+} = require("../middlewares/IsLoggedIn");
 
-
-router.get("/anime", async (req, res, next) => {
+router.get("/home", isLoggedIn, async (req, res, next) => {
   try {
-    const animes =  await axios.get(
-"https://kitsu.io/api/edge/anime/"
+    const number = Math.floor(Math.random() * 20) + 5;
+    const animes = await axios.get(
+      `https://kitsu.io/api/edge/anime?page[limit]=${number}`
     );
-    const animesData= animes.data
-    res.json({animesData});
+    const animesData = animes.data.data;
+    //console.log(animesData.data);
+    res.json({ animesData });
   } catch (err) {
     res.status(400).json({
       errorMessage: "Error in fetching animes from server! " + err.message,
