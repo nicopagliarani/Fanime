@@ -1,12 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Custom404Page } from "./components/Custom404Page";
+import { Favorites } from "./components/Favorites";
 import { FirstPage } from "./components/FirstPage";
 import { Home } from "./components/Home";
 import { LayoutComponent } from "./components/LayoutComponent";
 import { Login } from "./components/Login";
 import { Profile } from "./components/Profile";
 import { SignUp } from "./components/SignUp";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/showfavoriteAnimes" element={<Favorites />} />
           <Route path="*" element={<Custom404Page />} />
         </Route>
       </Routes>

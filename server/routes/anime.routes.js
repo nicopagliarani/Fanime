@@ -33,7 +33,8 @@ router.post("/saveFavoriteAnime", async (req, res) => {
    });
   await newAnime.save();
   //  console.log(newAnime);
-  const userId = req.session.currentUser._id;
+  console.log(req.session.user);
+  const userId = req.session.user._id;
   // const userId= '624edb94825a668c62728cc8'
   const user = await User.findById( userId );
   console.log(newAnime._id);
@@ -41,6 +42,7 @@ router.post("/saveFavoriteAnime", async (req, res) => {
   await user.save();
   res.json("Favourite Anime added");
 }catch (err) {
+  console.log(err);
     res.status(400).json({
       errorMessage: "Error in adding to favorites" + err.message,
     });
@@ -48,7 +50,7 @@ router.post("/saveFavoriteAnime", async (req, res) => {
 });
 
 router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
-  const userId = req.session.currentUser._id;
+  const userId = req.session.user._id;
   const user = await User.findById(userId ).populate("favoriteAnimes");
   showFavorites = user.favoriteAnimes;
   console.log(showFavorites);
