@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
+const Comment = require("../models/Comment.model")
 const axios = require("axios");
 const {
   isLoggedIn,
@@ -46,21 +47,30 @@ router.post("/saveFavoriteAnime", async (req, res) => {
   }
 });
 
+router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
+  const userId = req.session.currentUser._id;
+  const user = await User.findById(userId ).populate("favoriteAnimes");
+  showFavorites = user.favoriteAnimes;
+  console.log(showFavorites);
+  res.json({ showFavorites });
+  return;
+});
 
 
-// router.post("/createanime", async (req, res, next) => {
-//   try {
-//     const {  canonicalTitle,  synopsis } = req.body;
-//     console.log("Should create a new anime with", canonicalTitle,  synopsis);
-//     const newAnime = new Anime({ canonicalTitle,  synopsis });
-//     await newAnime.save();
-//     res.json({ message: "Succesfully created anime", anime: newAnime });
-//   } catch (err) {
-//     res.status(400).json({
-//       errorMessage: "Please provide correct request body! " + err.message,
-//     });
-//   }
-// });
+
+router.post("/createComment", async (req, res, next) => {
+  try {
+    const { comment } = req.body;
+    console.log("Should create a new comment with", comment);
+    const newComment = new Comment({ comment });
+    await newComment.save();
+    res.json({ message: "Succesfully created comment", comment: newComment });
+  } catch (err) {
+    res.status(400).json({
+      errorMessage: "Please provide correct request body! " + err.message,
+    });
+  }
+});
 
 router.delete("/deleteAnime", async (req, res, next) => {
   console.log(req.body);

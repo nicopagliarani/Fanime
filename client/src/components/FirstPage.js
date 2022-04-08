@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function FirstPage() {
+export function FirstPage() {
   return (
     <div class="d-flex justify-content-center">
       <form>
@@ -53,4 +53,4 @@ function FirstPage() {
   );
 }
 
-export default FirstPage;
+
