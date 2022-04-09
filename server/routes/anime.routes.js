@@ -16,6 +16,10 @@ router.get("/home", async (req, res, next) => {
     // const animes = await axios.get(
     //   `https://kitsu.io/api/edge/anime?page[limit]=20`
     // );
+    const filter = await axios.get(
+      "https://kitsu.io/api/edge/anime?filter[text]="
+    );
+    const filterForSearchBar = filter.data.data;
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
@@ -47,6 +51,7 @@ router.get("/home", async (req, res, next) => {
       seinenAnime,
       shoujoAnime,
       sportsAnime,
+      filterForSearchBar,
     });
   } catch (err) {
     res.status(400).json({

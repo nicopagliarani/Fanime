@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { AnimeDetail } from "../context/ListAnimeDetail";
+import { Search } from "../components/Search";
 
 export function Home() {
   // const [popAnime, setPopAnime] = useState([]);
@@ -53,7 +54,7 @@ export function Home() {
   }, []);
   return (
     <div className="HomePage">
-      <form></form>
+      <Search></Search>
       <h1>Most popular anime</h1>
       <div className="HomeCategories">
         {popAnime.map((element) => {
