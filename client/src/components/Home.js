@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { AnimeDetail } from "../context/ListAnimeDetail";
