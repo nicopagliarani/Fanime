@@ -52,56 +52,88 @@ export function Home() {
     fetchData();
   }, []);
   return (
-    <>
+    <div className="HomePage">
+      <form></form>
       <h1>Most popular anime</h1>
-      {popAnime.map((element) => {
-        return (
-          <>
-            <h3>
+      <div className="HomeCategories">
+        {popAnime.map((element) => {
+          return (
+            <>
               <Link to={`/home/${element.id}`}>
-                {element.attributes.canonicalTitle}
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
               </Link>
-            </h3>
-            <img src={element.attributes.posterImage.tiny} alt="anime img" />
-          </>
-        );
-      })}
+            </>
+          );
+        })}
+      </div>
       <h1>Seinen Anime</h1>
-      {seinen.map((element) => {
-        return (
-          <>
-            <h3>{element.attributes.canonicalTitle}</h3>
-            <img src={element.attributes.posterImage.tiny} alt="anime img" />
-          </>
-        );
-      })}
+      <div className="HomeCategories">
+        {seinen.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
       <h1>Sports Anime</h1>
-      {sports.map((element) => {
-        return (
-          <>
-            <h3>{element.attributes.canonicalTitle}</h3>
-            <img src={element.attributes.posterImage.tiny} alt="anime img" />
-          </>
-        );
-      })}
+      <div className="HomeCategories">
+        {sports.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
       <h1>Shoujo Anime</h1>
-      {shoujo.map((element) => {
-        return (
-          <>
-            <h3>{element.attributes.canonicalTitle}</h3>
-            <img src={element.attributes.posterImage.tiny} alt="anime img" />
-          </>
-        );
-      })}
+      <div className="HomeCategories">
+        {shoujo.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
       <h1>Shounen Anime</h1>
-      {shounen.map((element) => {
-        return (
-          <>
-            <h3>{element.attributes.canonicalTitle}</h3>
-            <img src={element.attributes.posterImage.tiny} alt="anime img" />
-          </>
-        );
-      })}
-    </>
+      <div className="HomeCategories">
+        {shounen.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+    </div>
   );
 }

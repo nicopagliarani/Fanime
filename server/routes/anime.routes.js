@@ -17,27 +17,27 @@ router.get("/home", async (req, res, next) => {
     //   `https://kitsu.io/api/edge/anime?page[limit]=20`
     // );
     const popularity = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=5"
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
     const popularityAnime = popularity.data.data;
 
     const shounen = await axios.get(
-      `https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shounen;page[limit]=5`
+      `https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shounen;page[limit]=20`
     );
     const shounenAnime = shounen.data.data;
 
     const seinen = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=seinen;page[limit]=5"
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=seinen;page[limit]=20"
     );
     const seinenAnime = seinen.data.data;
 
     const shoujo = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shoujo;page[limit]=5"
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shoujo;page[limit]=20"
     );
     const shoujoAnime = shoujo.data.data;
 
     const sports = await axios.get(
-      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=sports;page[limit]=5"
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=sports;page[limit]=20"
     );
     const sportsAnime = sports.data.data;
 
