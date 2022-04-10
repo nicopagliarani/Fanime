@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../consts";
 
 export function Favorites() {
@@ -7,9 +7,11 @@ export function Favorites() {
   useEffect(() => {
     const getFavoriteAnime = async () => {
       try {
-        const response = await axios.post(`${API_BASE_URL}/api/saveFavoriteAnime`);
+        const response = await axios.get(`${API_BASE_URL}/api/showfavoriteAnimes`);
         const data = response.data;
-        setFavoriteAnime(data);
+        // console.log(data);
+        setFavoriteAnime(data.showFavorites);
+        // console.log(data.showFavorites)
       } catch (err) {
         console.log("We got an error");
         console.error(err);
@@ -24,14 +26,13 @@ export function Favorites() {
       {favoriteAnime.map((element) => {
         return (
           <>
-            <h3>{element.attributes.canonicalTitle}</h3>
-            <img src={element.attributes.coverImage} alt="anime img" />
-            <p>{element.attributes.synopsis}</p>
+            <h3>{element.data}</h3>
             {/* <button onClick={()=> clickHandler(element)}>Add to favorites</button> */}
             </>
         );
       })}
-      {console.log(favoriteAnime)}
+      {console.log(favoriteAnime)} 
+      
     </>
   );
 }

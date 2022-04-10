@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { ButtonFavorite } from "./ButtonFavorite";
+import { ButtonDelete } from "./ButtonDelete";
 
 
 export function Home() {
@@ -49,6 +50,7 @@ export function Home() {
             <p>{element.attributes.synopsis}</p>
             {/* <button onClick={()=> clickHandler(element)}>Add to favorites</button> */}
             <ButtonFavorite clickHandler={element}/>
+            <ButtonDelete handleDeleteAnime={element}/>
             </>
         );
       })}

@@ -24,7 +24,7 @@ router.get("/home", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/saveFavoriteAnime", async (req, res) => {
+router.post("/saveFavoriteAnime", isLoggedIn, async (req, res) => {
   console.log(req.body);
   try{const newAnime = await new Anime({
     canonicalTitle: req.body.canonicalTitle,
@@ -51,7 +51,7 @@ router.post("/saveFavoriteAnime", async (req, res) => {
 
 router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
   const userId = req.session.user._id;
-  const user = await User.findById(userId ).populate("favoriteAnimes");
+  const user = await User.findById(userId ).populate('favoriteAnimes');
   showFavorites = user.favoriteAnimes;
   console.log(showFavorites);
   res.json({ showFavorites });
