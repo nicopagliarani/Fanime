@@ -4,13 +4,12 @@
   background-color: rgb(28, 28, 28);
 }
 .HomePage > h1 {
-  margin: 0px 50px 0px 50px;
+  margin: 0px 0px 0px 56px;
   font-size: 1.2rem;
 }
 .HomeCategories {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 10px;
@@ -18,7 +17,7 @@
 }
 
 .singleImg {
-  padding: 0px 2px 0px 2px;
+  padding: 0px 4px 0px 4px;
   transition: 0.2s ease-in;
 }
 .singleImg:hover {
@@ -37,4 +36,17 @@
   border-radius: 9px;
   border: 3px solid transparent;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+}
+.searchBar {
+  border-radius: 15px;
+  border-style: none;
+  border-color: none;
+  width: 500px;
+}
+
+.searchBarDiv {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0px 0px 0px;
+  padding: 50px 0px 25px 0px;
 }

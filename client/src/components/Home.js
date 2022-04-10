@@ -52,6 +52,7 @@ export function Home() {
     };
     fetchData();
   }, []);
+
   return (
     <div className="HomePage">
       <Search></Search>
