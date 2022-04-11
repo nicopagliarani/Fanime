@@ -3,20 +3,57 @@ const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
 const Comment = require("../models/Comment.model")
 const axios = require("axios");
-const {
-  isLoggedIn,
-  requireToBeLoggedOut,
-} = require("../middlewares/IsLoggedIn");
 
-router.get("/home", isLoggedIn, async (req, res, next) => {
+// function range(start, end) {
+//   return Array(end - start + 1)
+//     .fill()
+//     .map((_, idx) => start + idx);
+// }
+//let num = range(1, 1977);
+//console.log(num);
+router.get("/home", async (req, res, next) => {
   try {
-    const number = Math.floor(Math.random() * 20) + 5;
-    const animes = await axios.get(
-      `https://kitsu.io/api/edge/anime?page[limit]=${number}`
+    //const number = Math.floor(Math.random() * 20) + 5;
+    // const animes = await axios.get(
+    //   `https://kitsu.io/api/edge/anime?page[limit]=20`
+    // );
+    const filter = await axios.get(
+      "https://kitsu.io/api/edge/anime?filter[text]="
     );
-    const animesData = animes.data.data;
-    //console.log(animesData.data);
-    res.json({ animesData });
+    const filterForSearchBar = filter.data.data;
+    const popularity = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
+    );
+    const popularityAnime = popularity.data.data;
+
+    const shounen = await axios.get(
+      `https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shounen;page[limit]=20`
+    );
+    const shounenAnime = shounen.data.data;
+
+    const seinen = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=seinen;page[limit]=20"
+    );
+    const seinenAnime = seinen.data.data;
+
+    const shoujo = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=shoujo;page[limit]=20"
+    );
+    const shoujoAnime = shoujo.data.data;
+
+    const sports = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=sports;page[limit]=20"
+    );
+    const sportsAnime = sports.data.data;
+
+    res.json({
+      popularityAnime,
+      shounenAnime,
+      seinenAnime,
+      shoujoAnime,
+      sportsAnime,
+      filterForSearchBar,
+    });
   } catch (err) {
     res.status(400).json({
       errorMessage: "Error in fetching animes from server! " + err.message,

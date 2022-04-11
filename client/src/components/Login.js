@@ -16,7 +16,7 @@ export function Login() {
       const response = await axios.post(`${API_BASE_URL}/api/login`, formState);
       console.log(response.data);
       addUserToContext(response.data.user);
-      navigate("/profile");
+      navigate("/home");
     } catch (err) {
       console.log(err.response, "error");
       SetErrorState({ message: err.response.data.errorMessage });

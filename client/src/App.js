@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Custom404Page } from "./components/Custom404Page";
 import { Favorites } from "./components/Favorites";
+import { DetailAnimePage } from "./components/DetailAnimePage";
 import { FirstPage } from "./components/FirstPage";
 import { Home } from "./components/Home";
 import { LayoutComponent } from "./components/LayoutComponent";
@@ -16,7 +17,10 @@ function App() {
       <Routes>
         <Route element={<LayoutComponent />}>
           <Route path="/" element={<FirstPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home">
+            <Route index element={<Home />} />
+            <Route path=":id" element={<DetailAnimePage />} />
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
