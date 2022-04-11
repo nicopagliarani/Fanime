@@ -2,6 +2,7 @@
   color: white;
   padding-right: 10px;
   background-color: rgb(28, 28, 28);
+  padding: 0px 0px 100px 0px;
 }
 .HomePage > h1 {
   margin: 25px 0px 0px 50px;
@@ -38,15 +39,20 @@
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
   scrollbar-width: 15px;
 }
-.searchBar {
-  border-radius: 15px;
-  border-style: none;
-  width: 500px;
+.SearchResultPage {
+  background-color: rgb(28, 28, 28);
+  color: aliceblue;
+  padding-top: 100px;
+}
+.SearchResult {
+  display: grid;
+  grid-auto-flow: column;
+  text-align: justify;
+  margin: 100px 100px 0 100px;
+  text-decoration: none;
+  text-overflow: hidden;
 }
 
-.searchBarDiv {
-  display: flex;
-  justify-content: center;
-  margin: 0px 0px 0px 0px;
-  padding: 50px 0px 25px 0px;
+.SearchResult:hover {
+  outline: 2px solid black;
 }

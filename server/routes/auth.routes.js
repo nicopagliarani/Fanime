@@ -7,7 +7,7 @@ const {
   requireToBeLoggedOut,
 } = require("../middlewares/IsLoggedIn");
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", requireToBeLoggedOut, async (req, res, next) => {
   try {
     console.log("req.body :", req.body);
     const { username, password } = req.body;
@@ -29,7 +29,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", requireToBeLoggedOut, async (req, res, next) => {
   try {
     console.log(req.body);
     const { username, password } = req.body;
@@ -48,7 +48,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-router.post("/logout", async (req, res, next) => {
+router.post("/logout", isLoggedIn, async (req, res, next) => {
   req.session.destroy((err) => {
     if (err) next(err);
     return res.json({ message: "You are Logged Out" });

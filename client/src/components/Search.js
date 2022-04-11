@@ -1,4 +1,3 @@
-import { Input } from "antd";
 import { useEffect, useState } from "react";
 import loop from "../images/searchLoop.png";
 import axios from "axios";
@@ -8,11 +7,7 @@ import { useNavigate } from "react-router-dom";
 export function Search({ setSearchResult, searchResult }) {
   const [filterSearch, setFilterSearch] = useState("");
   const navigate = useNavigate();
-  // const { searchResult, setSearchResult } = useContext(AnimeDetail);
   const handleFilterInput = async (event) => {
-    // const response = await axios.get(`${API_BASE_URL}/api/search`, {
-    //   params: { search: event.target.value },
-    // });
     setFilterSearch(event.target.value);
   };
 
@@ -27,23 +22,23 @@ export function Search({ setSearchResult, searchResult }) {
   };
   useEffect(() => {});
   return (
-    <div className="searchBarDiv">
-      {/* <label>
-        <img src={loop} />
-      </label> */}
+    <div className="search-box">
       {console.log("search from search.js =>", searchResult)}
       <form
+        className="searchBar"
         onSubmit={(even) => {
           handleSubmit(even);
         }}
       >
-        <Input
-          className="searchBar"
+        <input
           value={filterSearch}
           type="text"
           onChange={handleFilterInput}
+          placeholder="Search for any anime"
         />
-        <button type="submit">Search</button>
+        <button className="SearchBtn" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

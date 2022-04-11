@@ -3,8 +3,6 @@ import { API_BASE_URL } from "../consts";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
-import { ButtonFavorite } from "./ButtonFavorite";
-
 
 import { AnimeDetail } from "../context/ListAnimeDetail";
 import { Search } from "../components/Search";
