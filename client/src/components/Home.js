@@ -49,7 +49,7 @@ export function Home() {
             <img src={element.attributes.posterImage.tiny} alt="anime img" />
             <p>{element.attributes.synopsis}</p>
             {/* <button onClick={()=> clickHandler(element)}>Add to favorites</button> */}
-            <ButtonFavorite clickHandler={element}/>
+            <ButtonFavorite canonicalTitle={element.attributes.canonicalTitle} coverImage= {element.attributes.posterImage.tiny} synopsis={element.attributes.synopsis} clickHandler={element}/>
             <ButtonDelete handleDeleteAnime={element}/>
             </>
         );

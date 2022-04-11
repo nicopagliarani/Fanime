@@ -30,7 +30,7 @@ router.post("/saveFavoriteAnime", isLoggedIn, async (req, res) => {
     canonicalTitle: req.body.canonicalTitle,
     synopsis:req.body.synopsis,
     coverImage: req.body.coverImage,
-   });
+});
   await newAnime.save();
   //  console.log(newAnime);
   console.log(req.session.user);
