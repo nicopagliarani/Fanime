@@ -8,6 +8,7 @@ export function ListAnimeWrapper(props) {
   const [seinen, setSeinen] = useState([]);
   const [shoujo, setShoujo] = useState([]);
   const [sports, setSports] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   //const [allAnimes, setAllAnimes] = useState([]);
   const allAnimes = [...popAnime, ...shounen, ...seinen, ...shoujo, ...sports];
   return (
@@ -24,6 +25,8 @@ export function ListAnimeWrapper(props) {
         sports,
         setSports,
         allAnimes,
+        setSearchResult,
+        searchResult,
       }}
     >
       {props.children}

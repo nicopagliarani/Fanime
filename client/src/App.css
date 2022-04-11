@@ -4,7 +4,7 @@
   background-color: rgb(28, 28, 28);
 }
 .HomePage > h1 {
-  margin: 0px 0px 0px 56px;
+  margin: 25px 0px 0px 50px;
   font-size: 1.2rem;
 }
 .HomeCategories {
@@ -36,11 +36,11 @@
   border-radius: 9px;
   border: 3px solid transparent;
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  scrollbar-width: 15px;
 }
 .searchBar {
   border-radius: 15px;
   border-style: none;
-  border-color: none;
   width: 500px;
 }
 
