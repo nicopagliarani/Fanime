@@ -3,6 +3,11 @@ const Anime = require("../models/Anime.model");
 const User = require("../models/User.model");
 const Comment = require("../models/Comment.model")
 const axios = require("axios");
+const {
+  isLoggedIn,
+  requireToBeLoggedOut,
+} = require("../middlewares/IsLoggedIn");
+
 
 // function range(start, end) {
 //   return Array(end - start + 1)
