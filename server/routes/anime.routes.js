@@ -74,10 +74,10 @@ router.post("/createComment", async (req, res, next) => {
   }
 });
 
-router.delete("/deleteAnime", async (req, res, next) => {
+router.delete("/deleteAnime/:id", async (req, res, next) => {
   console.log(req.body);
   try {
-    const {id} = req.body;
+    const id = req.params.id;
     await Anime.findByIdAndDelete(id);
     res.json({ message: "Successfully delete anime " + id});
   } catch (err) {
@@ -85,6 +85,7 @@ router.delete("/deleteAnime", async (req, res, next) => {
       .status(400)
       .json({ errorMessage: "Error in deleting anime! " + err.message });
   }
+  console.log(req.body)
 });
 
 module.exports = router;

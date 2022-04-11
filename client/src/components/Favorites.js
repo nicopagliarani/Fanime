@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../consts";
+import { ButtonDelete } from './ButtonDelete';
 
 export function Favorites() {
   const [favoriteAnime, setFavoriteAnime] = useState([]);
@@ -21,13 +22,30 @@ export function Favorites() {
     getFavoriteAnime();
   }, []);
 
+  function deleteAnime(id){
+    fetch (`${API_BASE_URL}/api/deleteAnime/${id}`,{
+      method: 'DELETE'
+    }).then((result)=>{
+  const filterAnimes = favoriteAnime.filter((a)=>a._id !== id)
+  setFavoriteAnime(filterAnimes)
+        result.json().then((resp)=>{
+          console.warn(resp)
+
+        })
+
+      })
+    }
+
   return (
     <>
       {favoriteAnime.map((element) => {
         return (
           <>
-            <h3>{element.data}</h3>
-            {/* <button onClick={()=> clickHandler(element)}>Add to favorites</button> */}
+            <h3>{element.canonicalTitle}</h3>
+            <img src={element.coverImage} alt="Anime img"></img>
+            <p>{element.synopsis}</p>
+            <button onClick={()=>deleteAnime(element._id)}>Delete</button>
+            
             </>
         );
       })}
