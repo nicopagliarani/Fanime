@@ -116,20 +116,6 @@ router.get("SearchResult/:id"),
     res.json(matchingIdToDisplayDetailPage);
   };
 
-// router.post("/createanime", async (req, res, next) => {
-//   try {
-//     const {  canonicalTitle,  synopsis } = req.body;
-//     console.log("Should create a new anime with", canonicalTitle,  synopsis);
-//     const newAnime = new Anime({ canonicalTitle,  synopsis });
-//     await newAnime.save();
-//     res.json({ message: "Succesfully created anime", anime: newAnime });
-//   } catch (err) {
-//     res.status(400).json({
-//       errorMessage: "Please provide correct request body! " + err.message,
-//     });
-//   }
-// });
-
 router.delete("/deleteAnime/:id", isLoggedIn, async (req, res, next) => {
   console.log(req.body);
   try {
