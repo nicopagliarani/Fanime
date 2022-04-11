@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../consts";
-import { ButtonDelete } from './ButtonDelete';
 
 export function Favorites() {
   const [favoriteAnime, setFavoriteAnime] = useState([]);

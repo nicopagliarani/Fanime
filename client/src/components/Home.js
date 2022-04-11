@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { ButtonFavorite } from "./ButtonFavorite";
-import { ButtonDelete } from "./ButtonDelete";
+
 
 
 export function Home() {
