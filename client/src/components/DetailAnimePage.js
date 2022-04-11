@@ -66,4 +66,4 @@ export function DetailAnimePage() {
     </>
   );
 }
-//add comment just for pushing
+//add comment just for pushing 1
