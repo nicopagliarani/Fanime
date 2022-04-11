@@ -22,10 +22,7 @@ router.get("/home", async (req, res, next) => {
     // const animes = await axios.get(
     //   `https://kitsu.io/api/edge/anime?page[limit]=20`
     // );
-    const filter = await axios.get(
-      "https://kitsu.io/api/edge/anime?filter[text]="
-    );
-    const filterForSearchBar = filter.data.data;
+
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
@@ -57,7 +54,6 @@ router.get("/home", async (req, res, next) => {
       seinenAnime,
       shoujoAnime,
       sportsAnime,
-      filterForSearchBar,
     });
   } catch (err) {
     res.status(400).json({
@@ -115,6 +111,29 @@ router.post("/createComment", async (req, res, next) => {
     });
   }
 });
+router.get("/search/:anime", async (req, res, next) => {
+  const {
+    data: { data },
+  } = await axios.get(
+    `https://kitsu.io/api/edge/anime?filter[text]=${req.params.anime}`
+  );
+  console.log(data);
+  res.json(data);
+});
+
+// router.post("/createanime", async (req, res, next) => {
+//   try {
+//     const {  canonicalTitle,  synopsis } = req.body;
+//     console.log("Should create a new anime with", canonicalTitle,  synopsis);
+//     const newAnime = new Anime({ canonicalTitle,  synopsis });
+//     await newAnime.save();
+//     res.json({ message: "Succesfully created anime", anime: newAnime });
+//   } catch (err) {
+//     res.status(400).json({
+//       errorMessage: "Please provide correct request body! " + err.message,
+//     });
+//   }
+// });
 
 router.delete("/deleteAnime/:id", async (req, res, next) => {
   console.log(req.body);

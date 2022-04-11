@@ -26,6 +26,8 @@ export function Home() {
     setShoujo,
     sports,
     setSports,
+    searchResult,
+    setSearchResult,
   } = useContext(AnimeDetail);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -56,15 +58,13 @@ export function Home() {
     fetchData();
   }, []);
 
-//   const clickHandler = async(element)=> {
-//     const response = await axios.post(`${API_BASE_URL}/api/saveFavoriteAnime`, element);
-//     const data = response.data;
-//     console.log(data);
-// }
-
   return (
     <div className="HomePage">
-      <Search></Search>
+      <Search setSearchResult={setSearchResult} searchResult={searchResult} />
+
+      {/* {setSearchResult.filter((el) => {
+        return el.attributes.canonicalTitle.include(filterSearch);
+      })} */}
       <h1>Most popular anime</h1>
       <div className="HomeCategories">
         {popAnime.map((element) => {

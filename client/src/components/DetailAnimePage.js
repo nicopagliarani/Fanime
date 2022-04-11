@@ -1,32 +1,66 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { AnimeDetail } from "../context/ListAnimeDetail";
+import axios from "axios";
+import { API_BASE_URL } from "../consts";
+import { AuthContext } from "../context/AuthProviderWrapper";
 
 export function DetailAnimePage() {
-  const [singleAnime, setSingleAnime] = useState([]);
-  const { id } = useParams();
-  const { allAnimes } = useContext(AnimeDetail);
-  console.log("allanimes =>", allAnimes);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
+    console.log(user);
+    if (!user) {
+      navigate("/login");
+    }
+  }, []);
+
+  const { setPopAnime, setShounen, setSeinen, setShoujo, setSports } =
+    useContext(AnimeDetail);
+
+  const [singleAnime, setSingleAnime] = useState(null);
+  const { id } = useParams();
+  const { allAnimes } = useContext(AnimeDetail);
+
+  function choseAnime() {
     const choseTheSingleAnime = allAnimes.filter((el) => {
       console.log(el.id, id);
-      return el.id === id;
+      return el.id == id;
     });
     setSingleAnime(choseTheSingleAnime[0]);
-    // console.log("whats inside anime ==>", singleAnime);
-  }, []);
+  }
+
+  const getAllAnimes = async () => {
+    const verify = await axios.get(`${API_BASE_URL}/api/verify`);
+    const data = verify.data;
+    setPopAnime(data.popularityAnime);
+    setShounen(data.shounenAnime);
+    setSeinen(data.seinenAnime);
+    setShoujo(data.shoujoAnime);
+    setSports(data.sportsAnime);
+  };
+
+  useEffect(() => {
+    allAnimes.length > 0 && user ? choseAnime() : getAllAnimes();
+  }, [allAnimes]);
 
   return (
     <>
-      <h1>{singleAnime.attributes.canonicalTitle}</h1>
-      <img src={singleAnime.attributes.posterImage.tiny} />
-      <p>{singleAnime.attributes.synopsis}</p>
-      <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
-      <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
-      <p>First episode came out :{singleAnime.attributes.createdAt}</p>
-      <p>last episode came out :{singleAnime.attributes.endDate} </p>
-      {console.log("anime =>", singleAnime)}
+      {singleAnime ? (
+        <div>
+          <h1>{singleAnime.attributes.canonicalTitle}</h1>
+          <img src={singleAnime.attributes.posterImage.large} />
+          <p>{singleAnime.attributes.synopsis}</p>
+          <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
+          <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
+          <p>First episode came out :{singleAnime.attributes.createdAt}</p>
+          <p>last episode came out :{singleAnime.attributes.endDate} </p>
+        </div>
+      ) : (
+        "loading"
+      )}
+      {console.log("singleAnime =>", singleAnime)}
     </>
   );
 }
