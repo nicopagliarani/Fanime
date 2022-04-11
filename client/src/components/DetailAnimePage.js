@@ -4,6 +4,7 @@ import { AnimeDetail } from "../context/ListAnimeDetail";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
+import { ButtonFavorite } from "./ButtonFavorite";
 
 export function DetailAnimePage() {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ export function DetailAnimePage() {
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
           <p>First episode came out :{singleAnime.attributes.createdAt}</p>
           <p>last episode came out :{singleAnime.attributes.endDate} </p>
+          <ButtonFavorite canonicalTitle={singleAnime.attributes.canonicalTitle} coverImage= {singleAnime.attributes.posterImage.tiny} synopsis={singleAnime.attributes.synopsis} clickHandler={singleAnime}/>
         </div>
       ) : (
         "loading"
