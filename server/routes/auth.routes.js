@@ -7,7 +7,7 @@ const {
   requireToBeLoggedOut,
 } = require("../middlewares/IsLoggedIn");
 
-router.post("/login", requireToBeLoggedOut, async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     console.log("req.body :", req.body);
     const { username, password } = req.body;
@@ -57,6 +57,7 @@ router.post("/logout", isLoggedIn, async (req, res, next) => {
 
 router.get("/verify", async (req, res, next) => {
   if (req.session.user) {
+    const user = req.session.user;
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
@@ -88,9 +89,10 @@ router.get("/verify", async (req, res, next) => {
       seinenAnime,
       shoujoAnime,
       sportsAnime,
+      user,
     });
   } else {
-    return res.json("Please login");
+    return res.json(null);
   }
 });
 module.exports = router;

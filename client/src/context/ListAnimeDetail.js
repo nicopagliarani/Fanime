@@ -10,7 +10,14 @@ export function ListAnimeWrapper(props) {
   const [sports, setSports] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   //const [allAnimes, setAllAnimes] = useState([]);
-  const allAnimes = [...popAnime, ...shounen, ...seinen, ...shoujo, ...sports];
+  const allAnimes = [
+    ...popAnime,
+    ...shounen,
+    ...seinen,
+    ...shoujo,
+    ...sports,
+    ...searchResult,
+  ];
   return (
     <AnimeDetail.Provider
       value={{

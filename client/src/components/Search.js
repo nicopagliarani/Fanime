@@ -16,14 +16,12 @@ export function Search({ setSearchResult, searchResult }) {
     const response = await axios.get(
       `${API_BASE_URL}/api/search/${filterSearch}`
     );
-    console.log("=> reponse :", response.data);
     setSearchResult(response.data);
     navigate("/home/SearchResult");
   };
   useEffect(() => {});
   return (
     <div className="search-box">
-      {console.log("search from search.js =>", searchResult)}
       <form
         className="searchBar"
         onSubmit={(even) => {

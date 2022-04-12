@@ -11,10 +11,7 @@ export function Login() {
   const { addUserToContext } = useContext(AuthContext);
   const login = async (formState) => {
     try {
-      console.log("formState", formState);
-      console.log(API_BASE_URL);
       const response = await axios.post(`${API_BASE_URL}/api/login`, formState);
-      console.log(response.data);
       addUserToContext(response.data.user);
       navigate("/home");
     } catch (err) {

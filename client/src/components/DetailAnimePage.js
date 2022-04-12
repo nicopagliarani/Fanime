@@ -16,12 +16,10 @@ export function DetailAnimePage() {
       navigate("/login");
     }
   }, []);
-
-  const { setPopAnime, setShounen, setSeinen, setShoujo, setSports } =
-    useContext(AnimeDetail);
+  const { id } = useParams();
 
   const [singleAnime, setSingleAnime] = useState(null);
-  const { id } = useParams();
+  // const { id } = useParams();
   const { allAnimes } = useContext(AnimeDetail);
 
   function choseAnime() {
@@ -32,20 +30,12 @@ export function DetailAnimePage() {
     setSingleAnime(choseTheSingleAnime[0]);
   }
 
-  const getAllAnimes = async () => {
-    const verify = await axios.get(`${API_BASE_URL}/api/verify`);
-    const data = verify.data;
-    setPopAnime(data.popularityAnime);
-    setShounen(data.shounenAnime);
-    setSeinen(data.seinenAnime);
-    setShoujo(data.shoujoAnime);
-    setSports(data.sportsAnime);
-  };
-
+  // useEffect(() => {
+  //   allAnimes.length > 0 && user ? choseAnime() : getAllAnimes();
+  // }, [allAnimes]);
   useEffect(() => {
-    allAnimes.length > 0 && user ? choseAnime() : getAllAnimes();
-  }, [allAnimes]);
-
+    choseAnime();
+  }, []);
   return (
     <>
       {singleAnime ? (
@@ -57,7 +47,12 @@ export function DetailAnimePage() {
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
           <p>First episode came out :{singleAnime.attributes.createdAt}</p>
           <p>last episode came out :{singleAnime.attributes.endDate} </p>
-          <ButtonFavorite canonicalTitle={singleAnime.attributes.canonicalTitle} coverImage= {singleAnime.attributes.posterImage.tiny} synopsis={singleAnime.attributes.synopsis} clickHandler={singleAnime}/>
+          <ButtonFavorite
+            canonicalTitle={singleAnime.attributes.canonicalTitle}
+            coverImage={singleAnime.attributes.posterImage.tiny}
+            synopsis={singleAnime.attributes.synopsis}
+            clickHandler={singleAnime}
+          />
         </div>
       ) : (
         "loading"

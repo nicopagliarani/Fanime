@@ -9,15 +9,12 @@ export function SignUp() {
   const [errorState, SetErrorState] = useState();
   const SignUp = async (formState) => {
     try {
-      console.log("formState", formState);
       const response = await axios.post(
         `${API_BASE_URL}/api/signup`,
         formState
       );
-      console.log(response);
       navigate("/login");
     } catch (err) {
-      console.log(err, "error");
       SetErrorState({ message: "Error sigup" });
     }
   };
