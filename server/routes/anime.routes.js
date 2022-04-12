@@ -107,15 +107,6 @@ router.get("/search/:anime", async (req, res, next) => {
   res.json(data);
 });
 
-router.get("SearchResult/:id"),
-  async (req, res, next) => {
-    const response = await axios.get(
-      `https://kitsu.io/api/edge/anime/${req.params.id}`
-    );
-    const matchingIdToDisplayDetailPage = response.data.data;
-    res.json(matchingIdToDisplayDetailPage);
-  };
-
 router.delete("/deleteAnime/:id", isLoggedIn, async (req, res, next) => {
   console.log(req.body);
   try {
