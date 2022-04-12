@@ -12,6 +12,7 @@ import { Profile } from "./components/Profile";
 import { SearchResultPage } from "./components/SearchResultPage";
 import { SignUp } from "./components/SignUp";
 import { AnimeDetail } from "./context/ListAnimeDetail";
+import {Comment} from "./components/Comment"
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/showfavoriteAnimes" element={<Favorites />} />
+          <Route path="/getComments" element={<Comment />} />
           <Route path="*" element={<Custom404Page />} />
         </Route>
       </Routes>

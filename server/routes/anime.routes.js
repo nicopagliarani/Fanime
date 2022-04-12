@@ -98,18 +98,37 @@ router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
 
 
 
-router.post("/createComment", async (req, res, next) => {
+router.post("/createComment",isLoggedIn, async (req, res, next) => {
+  console.log(req.body);
   try {
-    const { comment } = req.body;
+    const comment = new Comment({name:req.body.name,comment:req.body.comment, animeName:req.body.animeName});
     console.log("Should create a new comment with", comment);
-    const newComment = new Comment({ comment });
-    await newComment.save();
-    res.json({ message: "Succesfully created comment", comment: newComment });
+    await comment.save();
+  console.log(req.session.user);
+  const userId = req.session.user._id;
+  const user = await User.findById( userId );
+  console.log(comment._id);
+  user.comment.push(comment._id);
+  await user.save();
+    res.json({ message: "Succesfully created comment", comment});
   } catch (err) {
     res.status(400).json({
       errorMessage: "Please provide correct request body! " + err.message,
     });
   }
+});
+router.get("/getComments/:animeName", isLoggedIn, async (req, res) => {
+  animeName=req.params.animeName
+  console.log(animeName, "This are the anime name");
+  const userId = req.session.user._id;
+  const user = await User.findById(userId ).populate('comment');
+  // console.log(user.comment, "User comment is here")
+  showComments = user.comment.filter((element)=>{
+   return element.animeName == animeName
+});
+  console.log(showComments);
+  res.json({ showComments });
+  return;
 });
 router.get("/search/:anime", async (req, res, next) => {
   const {
