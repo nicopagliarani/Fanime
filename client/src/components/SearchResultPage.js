@@ -13,18 +13,14 @@ export function SearchResultPage() {
           return (
             <div className="SearchResult">
               <Link to={`/home/${element.id}`}>
-                <img
-                  src={element.attributes.posterImage.small}
-                  alt={element.attributes.canonicalTitle}
-                />
+                <div className="SearchImage">
+                  <img
+                    src={element.attributes.posterImage.small}
+                    alt={element.attributes.canonicalTitle}
+                  />
+                </div>
                 <h1>{element.attributes.canonicalTitle}</h1>
-                <p>
-                  <br />
-                  <br />
-                  <br />
-
-                  {element.attributes.synopsis}
-                </p>
+                <p>{element.attributes.synopsis}</p>
               </Link>
             </div>
           );

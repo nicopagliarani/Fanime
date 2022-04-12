@@ -38,10 +38,12 @@ export function DetailAnimePage() {
   }, []);
   return (
     <>
+      {console.log(singleAnime)}
       {singleAnime ? (
         <div>
           <h1>{singleAnime.attributes.canonicalTitle}</h1>
-          <img src={singleAnime.attributes.posterImage.large} />
+          <img src={singleAnime.attributes.posterImage.medium} />
+
           <p>{singleAnime.attributes.synopsis}</p>
           <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
