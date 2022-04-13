@@ -8,14 +8,22 @@ import { Link} from "react-router-dom";
 
 export function Favorites() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user,addUserToContext } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
-      navigate("/login");
+      
+      const stayLogin = async()=>{ 
+        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
+      if(!userFromSession.data) {console.log(userFromSession.data);
+        navigate("/login");
+      }else{
+        addUserToContext(userFromSession.data.user)
+      }
+      }
+      stayLogin();
     }
-  }, []);
+  }, []); 
   const [favoriteAnime, setFavoriteAnime] = useState([]);
   useEffect(() => {
     const getFavoriteAnime = async () => {
@@ -32,9 +40,9 @@ export function Favorites() {
         console.error(err);
         console.log(err.response.data);
       }
-    };
-    getFavoriteAnime();
-  }, []);
+    }; 
+   getFavoriteAnime();
+    }, []);
 
   function deleteAnime(id) {
     fetch(`${API_BASE_URL}/api/deleteAnime/${id}`, {
@@ -48,7 +56,7 @@ export function Favorites() {
     });
   }
 
-  return (
+  return ( user ? (
     <>
       {favoriteAnime.map((element) => {
         return (
@@ -62,6 +70,6 @@ export function Favorites() {
         );
       })}
       {console.log(favoriteAnime)}
-    </>
+    </>): <p>Loading</p>
   );
 }

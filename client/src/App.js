@@ -60,13 +60,7 @@ function App() {
           <Route path="/showfavoriteAnimes" element={<Favorites />} />
           <Route path="*" element={<Custom404Page />} />
         </Route>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/showfavoriteAnimes" element={<Favorites />} />
-        <Route path="/getComments" element={<Comment />} />
-        <Route path="*" element={<Custom404Page />} />
-      </Routes>
+       </Routes>
     </div>
   );
 }

@@ -6,14 +6,22 @@ import { AuthContext } from "../context/AuthProviderWrapper";
 
 export function Profile() {
   const navigate = useNavigate();
-  const { user, removeUserFromContext } = useContext(AuthContext);
+  const { user,  addUserToContext, removeUserFromContext } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log(user);
     if (!user) {
-      navigate("/login");
+      
+      const stayLogin = async()=>{ 
+        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
+      if(!userFromSession.data) {
+        navigate("/login");
+      }else{
+        addUserToContext(userFromSession.data.user)
+      }
+      }
+      stayLogin();
     }
-  }, [user, navigate]);
+  }, []);
 
   const logout = async () => {
     try {
@@ -26,11 +34,11 @@ export function Profile() {
       alert("there was an error logging out");
     }
   };
-  return (
+  return ( user ? (
     <div>
       <h1>Profile Page</h1>
       {user && <h2>Welcome, {user.username}</h2>}
       <button onClick={logout}>Logout</button>
-    </div>
+    </div>): <p>Loading</p>
   );
 }
