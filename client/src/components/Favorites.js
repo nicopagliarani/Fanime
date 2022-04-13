@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from "react";
 import { API_BASE_URL } from "../consts";
+import '../Favorites.css'
 
 export function Favorites() {
   const [favoriteAnime, setFavoriteAnime] = useState([]);
@@ -40,11 +41,14 @@ export function Favorites() {
       {favoriteAnime.map((element) => {
         return (
           <>
+          <div class="d-flex justify-content-center">
             <h3>{element.canonicalTitle}</h3>
-            <img src={element.coverImage} alt="Anime img"></img>
+            </div>
+            <div class="d-flex justify-content-center">
+            <img className="imgFavorite"src={element.coverImage} alt="Anime img"></img>
             {/* <p>{element.synopsis}</p> */}
             <button className="bn31" onClick={()=>deleteAnime(element._id)}><span className="bn31span">Delete</span></button>
-            
+            </div>
             </>
         );
       })}
