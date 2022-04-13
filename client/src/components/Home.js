@@ -3,16 +3,10 @@ import { API_BASE_URL } from "../consts";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
-
 import { AnimeDetail } from "../context/ListAnimeDetail";
 import { Search } from "../components/Search";
 
 export function Home() {
-  // const [popAnime, setPopAnime] = useState([]);
-  // const [shounen, setShounen] = useState([]);
-  // const [seinen, setSeinen] = useState([]);
-  // const [shoujo, setShoujo] = useState([]);
-  // const [sports, setSports] = useState([]);
   const {
     popAnime,
     setPopAnime,
@@ -26,6 +20,12 @@ export function Home() {
     setSports,
     searchResult,
     setSearchResult,
+    setIsekai,
+    isekai,
+    setHorror,
+    horror,
+    setCrime,
+    crime,
   } = useContext(AnimeDetail);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -46,6 +46,9 @@ export function Home() {
         setSeinen(data.seinenAnime);
         setShoujo(data.shoujoAnime);
         setSports(data.sportsAnime);
+        setIsekai(data.isekaiAnime);
+        setHorror(data.horrorAnime);
+        setCrime(data.crimeAnime);
       } catch (err) {
         console.log("We got an error");
         console.error(err);
@@ -59,10 +62,7 @@ export function Home() {
     <div className="HomePage">
       <Search setSearchResult={setSearchResult} searchResult={searchResult} />
 
-      {/* {setSearchResult.filter((el) => {
-        return el.attributes.canonicalTitle.include(filterSearch);
-      })} */}
-      <h1>Most popular anime</h1>
+      <h1>Most popular animes</h1>
       <div className="HomeCategories">
         {popAnime.map((element) => {
           return (
@@ -78,7 +78,8 @@ export function Home() {
           );
         })}
       </div>
-      <h1>Seinen Anime</h1>
+
+      <h1>Seinen Animes</h1>
       <div className="HomeCategories">
         {seinen.map((element) => {
           return (
@@ -94,7 +95,8 @@ export function Home() {
           );
         })}
       </div>
-      <h1>Sports Anime</h1>
+
+      <h1>Sports Animes</h1>
       <div className="HomeCategories">
         {sports.map((element) => {
           return (
@@ -110,7 +112,8 @@ export function Home() {
           );
         })}
       </div>
-      <h1>Shoujo Anime</h1>
+
+      <h1>Shoujo Animes</h1>
       <div className="HomeCategories">
         {shoujo.map((element) => {
           return (
@@ -126,9 +129,61 @@ export function Home() {
           );
         })}
       </div>
-      <h1>Shounen Anime</h1>
+
+      <h1>Shounen Animes</h1>
       <div className="HomeCategories">
         {shounen.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+
+      <h1>Crime</h1>
+      <div className="HomeCategories">
+        {crime.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+
+      <h1>Isekai Animes</h1>
+      <div className="HomeCategories">
+        {isekai.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+
+      <h1>Horror</h1>
+      <div className="HomeCategories">
+        {horror.map((element) => {
           return (
             <>
               <Link to={`/home/${element.id}`}>

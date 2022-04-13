@@ -1,0 +1,29 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+.Container {
+  background: rgb(44, 44, 44);
+  border-radius: 50px;
+}
+
+.UsernameInput {
+  display: block;
+  outline: none;
+  border-radius: 15px;
+  margin: 10px auto;
+  border: none;
+}
+.passwordInput {
+  outline: none;
+  border-radius: 15px;
+  border: none;
+}
+
+.btnLog {
+  border-radius: 10px;
+  border: none;
+}
+.btnLog:hover {
+  background-color: gray;
+}

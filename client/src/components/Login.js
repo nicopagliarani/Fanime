@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { UserNameAndPasswordForm } from "./UserNameAndPasswordForm";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
+import "../Css/Login.css";
 
 export function Login() {
   const [errorState, SetErrorState] = useState();
@@ -20,7 +21,7 @@ export function Login() {
     }
   };
   return (
-    <div>
+    <div className="Container">
       <h1>Login Page</h1>
       <UserNameAndPasswordForm
         btnText={"Login"}
@@ -28,6 +29,9 @@ export function Login() {
         passwordAutoComplete={"current-password"}
         error={errorState}
       />
+      <Link to={"/signup"}>
+        <p>D'ont have an account ? Sing up !</p>{" "}
+      </Link>
     </div>
   );
 }

@@ -11,12 +11,6 @@ export function LayoutComponent() {
         <NavLink className="nav-link" to="/profile">
           Profile
         </NavLink>
-        <NavLink className="nav-link" to="/login">
-          Login
-        </NavLink>
-        <NavLink className="nav-link" to="/signup">
-          SignUp
-        </NavLink>
         <NavLink className="nav-link" to="/showfavoriteAnimes">
           Favorites
         </NavLink>

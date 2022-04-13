@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../Css/Signup.css";
+import "../Css/Login.css";
 
 export function UserNameAndPasswordForm({
   submitFormAction,
@@ -23,6 +25,8 @@ export function UserNameAndPasswordForm({
         autoComplete="username"
         value={formState.username}
         onChange={handleFormState}
+        placeholder="Enter your username"
+        className="UsernameInput"
       />
       <input
         type="password"
@@ -30,8 +34,12 @@ export function UserNameAndPasswordForm({
         autoComplete={passwordAutoComplete}
         value={formState.password}
         onChange={handleFormState}
+        placeholder="Enter your password"
+        className="passwordInput"
       />
-      <button type="submit">{btnText}</button>
+      <button type="submit" className="btnLog">
+        {btnText}
+      </button>
     </form>
   );
 }

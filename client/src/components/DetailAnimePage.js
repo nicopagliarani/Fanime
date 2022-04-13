@@ -36,18 +36,28 @@ export function DetailAnimePage() {
     <>
       {console.log(singleAnime)}
       {singleAnime ? (
-        <div>
+        <div className="DetailPage">
           <h1>{singleAnime.attributes.canonicalTitle}</h1>
-          <img
-            src={singleAnime.attributes.posterImage.medium}
-            alt={singleAnime.attributes.canonicalTitle}
-          />
-          <p>{singleAnime.attributes.synopsis}</p>
-          <p>{singleAnime.attributes.synopsis}</p>
-          <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
-          <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
-          <p>First episode came out :{singleAnime.attributes.createdAt}</p>
-          <p>last episode came out :{singleAnime.attributes.endDate} </p>
+          <div className="DetailImg">
+            <img
+              src={singleAnime.attributes.posterImage.medium}
+              alt={singleAnime.attributes.canonicalTitle}
+            />
+          </div>
+          <p className="DetailParagraph">{singleAnime.attributes.synopsis}</p>
+          <p className="DetailParagraph">{singleAnime.attributes.synopsis}</p>
+          <p className="DetailParagraph">
+            AverageRating : {singleAnime.attributes.averageRating}/100
+          </p>
+          <p className="DetailParagraph">
+            Popularity rank : {singleAnime.attributes.popularityRank}
+          </p>
+          <p className="DetailParagraph">
+            First episode came out :{singleAnime.attributes.createdAt}
+          </p>
+          <p className="DetailParagraph">
+            last episode came out :{singleAnime.attributes.endDate}{" "}
+          </p>
           <ButtonFavorite
             canonicalTitle={singleAnime.attributes.canonicalTitle}
             coverImage={singleAnime.attributes.posterImage.tiny}
