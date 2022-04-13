@@ -3,7 +3,7 @@ import loop from "../images/searchLoop.png";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { useNavigate } from "react-router-dom";
-import "../Search.css";
+import "../Css/Search.css";
 
 export function Search({ setSearchResult, searchResult }) {
   const [filterSearch, setFilterSearch] = useState("");
