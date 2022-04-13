@@ -42,3 +42,4 @@ export function Search({ setSearchResult, searchResult }) {
     </div>
   );
 }
+//
