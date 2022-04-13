@@ -10,15 +10,14 @@ body {
   border-radius: 40px;
   box-sizing: border-box;
   color: #00a84f;
-  display: block;
   height: 50px;
   font-size: 1.4em;
   padding: 4px;
   position: relative;
   text-decoration: none;
-  width: 7em;
+  width: 5em;
   z-index: 2;
-}
+  }
 
 .bn31:hover {
   color: #fff;
@@ -40,3 +39,10 @@ body {
 .bn31:hover .bn31span {
   background: transparent;
 }
+.center-detail-anime{
+  text-align:center;
+}
+.flex-detail-anime{display:flex;
+align-items: center ;
+justify-content: center;
+gap: 30px;}

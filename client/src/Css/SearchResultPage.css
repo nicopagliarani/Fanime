@@ -1,0 +1,36 @@
+.center-search-result-page{
+    color:white;
+    text-decoration:none;
+    text-align:center;
+}
+.SearchResultPage {
+    background-color: rgb(28, 28, 28);
+    color: aliceblue;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .SearchResult{
+    display: flex;
+    margin: 100px 100px 0 100px;
+    text-decoration: none;
+    text-overflow: hidden;
+    background: rgb(57, 57, 57);
+    text-align:center;
+    color:white;
+  }
+  .SearchResultPage {
+    text-decoration: none;
+    color: white;
+  }
+  .SearchImage {
+    float: left;
+    text-align: justify;
+    margin-right:30px;
+  }
+  .SearchResult:hover {
+    outline: 9px solid black;
+  }
+  .SearchResult p {
+      text-align:justify;
+      margin:30px;
+  }

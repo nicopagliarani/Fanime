@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../consts";
-import '../Favorites.css'
+import "../Css/Favorites.css";
 import { AuthContext } from "../context/AuthProviderWrapper";
+import { Link} from "react-router-dom";
 
 export function Favorites() {
   const navigate = useNavigate();
@@ -51,16 +52,13 @@ export function Favorites() {
     <>
       {favoriteAnime.map((element) => {
         return (
-          <>
-          <div class="d-flex justify-content-center">
-            <h3>{element.canonicalTitle}</h3>
-            </div>
-            <div class="d-flex justify-content-center">
-            <img className="imgFavorite"src={element.coverImage} alt="Anime img"></img>
-            {/* <p>{element.synopsis}</p> */}
+          <div className="favorite">
+          <h1>{element.canonicalTitle}</h1>
+            <div className="flex-favorite">
+        <img className="imgFavorite"src={element.coverImage} alt="Anime img"></img>
             <button className="bn31" onClick={()=>deleteAnime(element._id)}><span className="bn31span">Delete</span></button>
             </div>
-            </>
+            </div>
         );
       })}
       {console.log(favoriteAnime)}

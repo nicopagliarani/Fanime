@@ -37,24 +37,29 @@ export function DetailAnimePage() {
       {console.log(singleAnime)}
       {singleAnime ? (
         <div>
+          <div className="center-detail-anime">
           <h1>{singleAnime.attributes.canonicalTitle}</h1>
-          <img
-            src={singleAnime.attributes.posterImage.medium}
-            alt={singleAnime.attributes.canonicalTitle}
-          />
-          <p>{singleAnime.attributes.synopsis}</p>
-          <p>{singleAnime.attributes.synopsis}</p>
+          
           <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
           <p>First episode came out :{singleAnime.attributes.createdAt}</p>
           <p>last episode came out :{singleAnime.attributes.endDate} </p>
+          <div className="flex-detail-anime">
+          <img className="imageDetailAnime "
+            src={singleAnime.attributes.posterImage.medium}
+            alt={singleAnime.attributes.canonicalTitle}
+          />
           <ButtonFavorite
             canonicalTitle={singleAnime.attributes.canonicalTitle}
             coverImage={singleAnime.attributes.posterImage.tiny}
             synopsis={singleAnime.attributes.synopsis}
             clickHandler={singleAnime}
           />
+          </div>
+          
+          <p>{singleAnime.attributes.synopsis}</p>
           <Comment animeName={singleAnime.attributes.canonicalTitle}></Comment>
+          </div>
         </div>
       ) : (
         "loading"
