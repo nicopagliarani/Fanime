@@ -7,6 +7,11 @@ import { AnimeDetail } from "../context/ListAnimeDetail";
 import { Search } from "../components/Search";
 
 export function Home() {
+  // const [popAnime, setPopAnime] = useState([]);
+  // const [shounen, setShounen] = useState([]);
+  // const [seinen, setSeinen] = useState([]);
+  // const [shoujo, setShoujo] = useState([]);
+  // const [sports, setSports] = useState([]);
   const {
     popAnime,
     setPopAnime,
@@ -32,15 +37,14 @@ export function Home() {
 
   useEffect(() => {
     if (!user) {
-      
-      const stayLogin = async()=>{ 
-        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
-      if(!userFromSession.data) {
-        navigate("/login");
-      }else{
-        addUserToContext(userFromSession.data.user)
-      }
-      }
+      const stayLogin = async () => {
+        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`);
+        if (!userFromSession.data) {
+          navigate("/login");
+        } else {
+          addUserToContext(userFromSession.data.user);
+        }
+      };
       stayLogin();
     }
   }, []);
@@ -67,11 +71,14 @@ export function Home() {
     fetchData();
   }, []);
 
-  return (user ? (
+  return user ? (
     <div className="HomePage">
       <Search setSearchResult={setSearchResult} searchResult={searchResult} />
 
-      <h1>Most popular animes</h1>
+      {/* {setSearchResult.filter((el) => {
+        return el.attributes.canonicalTitle.include(filterSearch);
+      })} */}
+      <h1>Most popular anime</h1>
       <div className="HomeCategories">
         {popAnime.map((element) => {
           return (
@@ -87,8 +94,7 @@ export function Home() {
           );
         })}
       </div>
-
-      <h1>Seinen Animes</h1>
+      <h1>Seinen Anime</h1>
       <div className="HomeCategories">
         {seinen.map((element) => {
           return (
@@ -104,61 +110,9 @@ export function Home() {
           );
         })}
       </div>
-
-      <h1>Sports Animes</h1>
+      <h1>Sports Anime</h1>
       <div className="HomeCategories">
         {sports.map((element) => {
-          return (
-            <>
-              <Link to={`/home/${element.id}`}>
-                <img
-                  className="singleImg"
-                  src={element.attributes.posterImage.tiny}
-                  alt="anime img"
-                />
-              </Link>
-            </>
-          );
-        })}
-      </div>
-
-      <h1>Shoujo Animes</h1>
-      <div className="HomeCategories">
-        {shoujo.map((element) => {
-          return (
-            <>
-              <Link to={`/home/${element.id}`}>
-                <img
-                  className="singleImg"
-                  src={element.attributes.posterImage.tiny}
-                  alt="anime img"
-                />
-              </Link>
-            </>
-          );
-        })}
-      </div>
-
-      <h1>Shounen Animes</h1>
-      <div className="HomeCategories">
-        {shounen.map((element) => {
-          return (
-            <>
-              <Link to={`/home/${element.id}`}>
-                <img
-                  className="singleImg"
-                  src={element.attributes.posterImage.tiny}
-                  alt="anime img"
-                />
-              </Link>
-            </>
-          );
-        })}
-      </div>
-
-      <h1>Crime</h1>
-      <div className="HomeCategories">
-        {crime.map((element) => {
           return (
             <>
               <Link to={`/home/${element.id}`}>
@@ -190,6 +144,39 @@ export function Home() {
         })}
       </div>
 
+      <h1>Shoujo Anime</h1>
+      <div className="HomeCategories">
+        {shoujo.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+      <h1>Shounen Anime</h1>
+      <div className="HomeCategories">
+        {shounen.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
+
       <h1>Horror</h1>
       <div className="HomeCategories">
         {horror.map((element) => {
@@ -206,6 +193,25 @@ export function Home() {
           );
         })}
       </div>
+
+      <h1>Crime</h1>
+      <div className="HomeCategories">
+        {crime.map((element) => {
+          return (
+            <>
+              <Link to={`/home/${element.id}`}>
+                <img
+                  className="singleImg"
+                  src={element.attributes.posterImage.tiny}
+                  alt="anime img"
+                />
+              </Link>
+            </>
+          );
+        })}
+      </div>
     </div>
+  ) : (
+    <p>Loading</p>
   );
 }

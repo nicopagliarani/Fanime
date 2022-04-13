@@ -1,7 +1,3 @@
-body {
-  display: flex;
-  justify-content: center;
-}
 .Container {
   background: rgb(44, 44, 44);
   border-radius: 50px;
