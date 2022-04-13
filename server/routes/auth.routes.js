@@ -29,7 +29,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/signup", async (req, res, next) => {
+router.post("/signup", requireToBeLoggedOut, async (req, res, next) => {
   try {
     console.log(req.body);
     const { username, password } = req.body;
@@ -48,7 +48,7 @@ router.post("/signup", async (req, res, next) => {
   }
 });
 
-router.post("/logout", async (req, res, next) => {
+router.post("/logout", isLoggedIn, async (req, res, next) => {
   req.session.destroy((err) => {
     if (err) next(err);
     return res.json({ message: "You are Logged Out" });
@@ -57,6 +57,7 @@ router.post("/logout", async (req, res, next) => {
 
 router.get("/verify", async (req, res, next) => {
   if (req.session.user) {
+    const user = req.session.user;
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
@@ -88,9 +89,10 @@ router.get("/verify", async (req, res, next) => {
       seinenAnime,
       shoujoAnime,
       sportsAnime,
+      user,
     });
   } else {
-    return res.json("Please login");
+    return res.json(null);
   }
 });
 module.exports = router;

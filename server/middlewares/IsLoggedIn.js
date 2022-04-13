@@ -8,7 +8,7 @@ const isLoggedIn = (req, res, next) => {
 };
 
 const requireToBeLoggedOut = (req, res, next) => {
-  if (req.session.user) {
+  if (!req.session.user) {
     return next();
   }
   return res
