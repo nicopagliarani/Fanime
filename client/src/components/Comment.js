@@ -50,16 +50,15 @@ export function Comment({animeName}) {
         <h3>Comments</h3>
         <div className="comment-flex">
         <form>
-  <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} name="comment"></textarea><br></br>
+  <textarea className="textArea" value={comment} onChange={(e)=>{setComment(e.target.value)}} name="comment"></textarea>
         <button className="bn31" onClick={(e)=> clickHandler(e)}><span className="bn31span">Submit</span></button>
         </form>
-  </div>
-  
-        <div>
-            {getBackendComments.map((e)=>{
+        </div>
+  <div>
+{getBackendComments.map((e)=>{
                 return (
-                    <div>
-                        <h3>{e.name}</h3>
+                    <div className="commentList">
+                        <h3> {e.name}:</h3>
                     <p>{e.comment}</p>
                     </div>
                 )

@@ -4,6 +4,7 @@
 body {
   background-color: rgb(28, 28, 28);
   color: rgb(255, 244, 244);
+  margin:20px;
 }
 .bn31 {
   background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
@@ -45,4 +46,8 @@ body {
 .flex-detail-anime{display:flex;
 align-items: center ;
 justify-content: center;
-gap: 30px;}
+gap: 30px;
+text-align:justify;}
+.textArea{
+  margin-right:50px;
+}

@@ -1,5 +1,10 @@
 .comment-flex{
     display:flex;
     align-items: center ;
-    justify-content: center;
-    gap: 30px;}
+    gap:30px;
+    margin-right:40px;
+}
+.commentList{
+    background-color:rgb(190, 189, 189);
+    color:black
+}

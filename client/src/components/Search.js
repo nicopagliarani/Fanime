@@ -29,13 +29,13 @@ export function Search({ setSearchResult, searchResult }) {
           handleSubmit(even);
         }}
       >
-        <input
+        <input className = "search-text"
           value={filterSearch}
           type="text"
           onChange={handleFilterInput}
           placeholder="Search for any anime"
         />
-        <button className="button-search" type="submit">
+        <button className="search-btn" type="submit">
           <span>Search</span>
         </button>
       </form>
