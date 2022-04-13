@@ -15,6 +15,7 @@ import { AnimeDetail } from "./context/ListAnimeDetail";
 import { AuthContext } from "./context/AuthProviderWrapper";
 import { API_BASE_URL } from "./consts";
 import axios from "axios";
+import { Comment } from "./components/Comment";
 
 function App() {
   const {
@@ -41,34 +42,32 @@ function App() {
   const navigate = useNavigate();
   const checkUser = "";
   return (
-    <>
-      {/* {user != undefined ? ( */}
-      <div className="App">
-        <Routes>
-          <Route element={<LayoutComponent />}>
-            <Route path="/" element={<FirstPage />} />
-            <Route path="/home">
-              <Route index element={<Home />} />
-              <Route path=":id" element={<DetailAnimePage />} />
-              <Route
-                path="SearchResult"
-                element={<SearchResultPage searchResult={searchResult} />}
-              />
-            </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/showfavoriteAnimes" element={<Favorites />} />
-            <Route path="*" element={<Custom404Page />} />
+    <div className="App">
+      <Routes>
+        <Route element={<LayoutComponent />}>
+          <Route path="/" element={<FirstPage />} />
+          <Route path="/home">
+            <Route index element={<Home />} />
+            <Route path=":id" element={<DetailAnimePage />} />
+            <Route
+              path="SearchResult"
+              element={<SearchResultPage searchResult={searchResult} />}
+            />
           </Route>
-        </Routes>
-      </div>
-      {/*  ) : (
-        (checkUser = verify()(checkUser.data.user)
-          ? (getAllAnimes(), addUserToContext(checkUser.data.user))
-          : navigate("/login"))
-      )} */}
-    </>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/showfavoriteAnimes" element={<Favorites />} />
+          <Route path="*" element={<Custom404Page />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/showfavoriteAnimes" element={<Favorites />} />
+        <Route path="/getComments" element={<Comment />} />
+        <Route path="*" element={<Custom404Page />} />
+      </Routes>
+    </div>
   );
 }
 

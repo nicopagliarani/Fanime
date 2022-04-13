@@ -53,8 +53,10 @@ export function Favorites() {
           <>
             <h3>{element.canonicalTitle}</h3>
             <img src={element.coverImage} alt="Anime img"></img>
-            <p>{element.synopsis}</p>
-            <button onClick={() => deleteAnime(element._id)}>Delete</button>
+            {/* <p>{element.synopsis}</p> */}
+            <button className="bn31" onClick={() => deleteAnime(element._id)}>
+              <span className="bn31span">Delete</span>
+            </button>
           </>
         );
       })}

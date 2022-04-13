@@ -8,7 +8,7 @@ export function ButtonFavorite({canonicalTitle,coverImage,synopsis}) {
         console.log(data);}
   return (
     <div>
-        <button onClick={()=> clickHandler()}>Add to favorites</button></div>
+        <button className="bn31" onClick={()=> clickHandler()}><span className="bn31span">Favorites</span></button></div>
   )
 }
 

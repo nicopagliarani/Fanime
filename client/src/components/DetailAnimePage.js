@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from "react";
 import { AnimeDetail } from "../context/ListAnimeDetail";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { ButtonFavorite } from "./ButtonFavorite";
+import { Comment } from "./Comment";
+import "../Css/DetailAnimePage.css";
 
 export function DetailAnimePage() {
   const navigate = useNavigate();
@@ -52,6 +54,7 @@ export function DetailAnimePage() {
             synopsis={singleAnime.attributes.synopsis}
             clickHandler={singleAnime}
           />
+          <Comment animeName={singleAnime.attributes.canonicalTitle}></Comment>
         </div>
       ) : (
         "loading"
@@ -60,4 +63,4 @@ export function DetailAnimePage() {
     </>
   );
 }
-//add comment just for pushing 1
+//add comment just for pushing
