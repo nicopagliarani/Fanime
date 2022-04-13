@@ -8,7 +8,7 @@ const {
   requireToBeLoggedOut,
 } = require("../middlewares/IsLoggedIn");
 
-router.get("/home", isLoggedIn, async (req, res, next) => {
+router.get("/home", async (req, res, next) => {
   try {
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
@@ -49,7 +49,7 @@ router.get("/home", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/saveFavoriteAnime", isLoggedIn, async (req, res) => {
+router.post("/saveFavoriteAnime", async (req, res) => {
   console.log(req.body);
   try {
     const newAnime = await new Anime({
@@ -75,7 +75,7 @@ router.post("/saveFavoriteAnime", isLoggedIn, async (req, res) => {
   }
 });
 
-router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
+router.get("/showfavoriteAnimes", async (req, res) => {
   const userId = req.session.user._id;
   const user = await User.findById(userId).populate("favoriteAnimes");
   showFavorites = user.favoriteAnimes;
@@ -84,7 +84,7 @@ router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
   return;
 });
 
-router.post("/createComment", isLoggedIn, async (req, res, next) => {
+router.post("/createComment", async (req, res, next) => {
   try {
     const { comment } = req.body;
     console.log("Should create a new comment with", comment);
@@ -107,7 +107,7 @@ router.get("/search/:anime", async (req, res, next) => {
   res.json(data);
 });
 
-router.delete("/deleteAnime/:id", isLoggedIn, async (req, res, next) => {
+router.delete("/deleteAnime/:id", async (req, res, next) => {
   console.log(req.body);
   try {
     const id = req.params.id;

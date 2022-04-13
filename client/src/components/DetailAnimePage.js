@@ -1,8 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { AnimeDetail } from "../context/ListAnimeDetail";
-import axios from "axios";
-import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { ButtonFavorite } from "./ButtonFavorite";
 
@@ -19,7 +17,6 @@ export function DetailAnimePage() {
   const { id } = useParams();
 
   const [singleAnime, setSingleAnime] = useState(null);
-  // const { id } = useParams();
   const { allAnimes } = useContext(AnimeDetail);
 
   function choseAnime() {
@@ -30,9 +27,6 @@ export function DetailAnimePage() {
     setSingleAnime(choseTheSingleAnime[0]);
   }
 
-  // useEffect(() => {
-  //   allAnimes.length > 0 && user ? choseAnime() : getAllAnimes();
-  // }, [allAnimes]);
   useEffect(() => {
     choseAnime();
   }, []);
@@ -42,8 +36,11 @@ export function DetailAnimePage() {
       {singleAnime ? (
         <div>
           <h1>{singleAnime.attributes.canonicalTitle}</h1>
-          <img src={singleAnime.attributes.posterImage.medium} />
-
+          <img
+            src={singleAnime.attributes.posterImage.medium}
+            alt={singleAnime.attributes.canonicalTitle}
+          />
+          <p>{singleAnime.attributes.synopsis}</p>
           <p>{singleAnime.attributes.synopsis}</p>
           <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>

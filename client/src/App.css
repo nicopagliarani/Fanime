@@ -52,8 +52,7 @@
   text-overflow: hidden;
   background: rgb(57, 57, 57);
 }
-.SearchResultPage h1,
-p {
+.SearchResultPage {
   text-decoration: none;
   color: white;
 }
