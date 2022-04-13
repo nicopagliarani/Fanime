@@ -73,3 +73,4 @@ export function Favorites() {
     </>): <p>Loading</p>
   );
 }
+//
