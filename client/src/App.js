@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import "./App.css";
+import "./Css/App.css";
 import { Custom404Page } from "./components/Custom404Page";
 import { Favorites } from "./components/Favorites";
 import { DetailAnimePage } from "./components/DetailAnimePage";
