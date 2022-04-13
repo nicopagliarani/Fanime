@@ -4,7 +4,6 @@ import "./Css/App.css";
 import { Custom404Page } from "./components/Custom404Page";
 import { Favorites } from "./components/Favorites";
 import { DetailAnimePage } from "./components/DetailAnimePage";
-import { FirstPage } from "./components/FirstPage";
 import { Home } from "./components/Home";
 import { LayoutComponent } from "./components/LayoutComponent";
 import { Login } from "./components/Login";
