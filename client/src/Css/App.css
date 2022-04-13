@@ -39,27 +39,4 @@
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
   scrollbar-width: 15px;
 }
-.SearchResultPage {
-  background-color: rgb(28, 28, 28);
-  color: aliceblue;
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-.SearchResult {
-  display: flex;
-  margin: 100px 100px 0 100px;
-  text-decoration: none;
-  text-overflow: hidden;
-  background: rgb(57, 57, 57);
-}
-.SearchResultPage {
-  text-decoration: none;
-  color: white;
-}
-.SearchImage {
-  float: left;
-  text-align: justify;
-}
-.SearchResult:hover {
-  outline: 9px solid black;
-}
+

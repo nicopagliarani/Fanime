@@ -4,6 +4,7 @@ import axios from 'axios'
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { useContext, useEffect } from "react";
+import '../Css/Comment.css'
 
 
 export function Comment({animeName}) {
@@ -45,17 +46,20 @@ export function Comment({animeName}) {
 
 
   return (
-    <div className="comments">
-        <h3 className="comments-title">Comments</h3>
+    <div >
+        <h3>Comments</h3>
+        <div className="comment-flex">
         <form>
   <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} name="comment"></textarea><br></br>
         <button className="bn31" onClick={(e)=> clickHandler(e)}><span className="bn31span">Submit</span></button>
-  </form>
-        <div className="comments-container">
+        </form>
+  </div>
+  
+        <div>
             {getBackendComments.map((e)=>{
                 return (
                     <div>
-                    <h3>{e.name}</h3>
+                        <h3>{e.name}</h3>
                     <p>{e.comment}</p>
                     </div>
                 )

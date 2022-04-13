@@ -28,13 +28,22 @@ export function Home() {
     crime,
   } = useContext(AnimeDetail);
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, addUserToContext } = useContext(AuthContext);
 
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      
+      const stayLogin = async()=>{ 
+        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
+      if(!userFromSession.data) {
+        navigate("/login");
+      }else{
+        addUserToContext(userFromSession.data.user)
+      }
+      }
+      stayLogin();
     }
-  }, [user, navigate]);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +67,7 @@ export function Home() {
     fetchData();
   }, []);
 
-  return (
+  return (user ? (
     <div className="HomePage">
       <Search setSearchResult={setSearchResult} searchResult={searchResult} />
 
