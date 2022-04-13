@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { ButtonFavorite } from "./ButtonFavorite";
 import { Comment } from "./Comment"; 
+import '../DetailAnimePage.css'
 
 export function DetailAnimePage() {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ export function DetailAnimePage() {
       {singleAnime ? (
         <div>
           <h1>{singleAnime.attributes.canonicalTitle}</h1>
-          <img src={singleAnime.attributes.posterImage.large} />
+          <img className="imageDetailAnime"src={singleAnime.attributes.posterImage.large} />
           <p>{singleAnime.attributes.synopsis}</p>
           <p>AverageRating : {singleAnime.attributes.averageRating}/100</p>
           <p>Popularity rank : {singleAnime.attributes.popularityRank}</p>
@@ -60,8 +61,7 @@ export function DetailAnimePage() {
           <p>last episode came out :{singleAnime.attributes.endDate} </p>
           <ButtonFavorite canonicalTitle={singleAnime.attributes.canonicalTitle} coverImage= {singleAnime.attributes.posterImage.tiny} synopsis={singleAnime.attributes.synopsis} clickHandler={singleAnime}/>
           <Comment animeName={singleAnime.attributes.canonicalTitle}></Comment>
-
-        </div>
+          </div>
       ) : (
         "loading"
       )}

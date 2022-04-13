@@ -49,7 +49,7 @@ export function Comment({animeName}) {
         <h3 className="comments-title">Comments</h3>
         <form>
   <textarea value={comment} onChange={(e)=>{setComment(e.target.value)}} name="comment"></textarea><br></br>
-        <button onClick={(e)=> clickHandler(e)}>Submit</button>
+        <button className="bn31" onClick={(e)=> clickHandler(e)}><span className="bn31span">Submit</span></button>
   </form>
         <div className="comments-container">
             {getBackendComments.map((e)=>{

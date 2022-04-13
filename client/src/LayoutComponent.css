@@ -1,0 +1,39 @@
+.nav {
+    text-align: center;
+    font-size: 1rem;
+    border-bottom: 1px solid hsla(0,0%,100%,0.1);
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+  
+  .nav-link, .nav-link:visited{
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 10px;
+    color: #fff;
+    margin-right: 5px;
+  }
+  
+  .nav-link:hover {
+    text-decoration:none;
+    color: #343a40;
+    background-color: #38d9a9;
+   }
+  .nav-link.current {
+    border-bottom: 1px solid #38d9a9;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  @media (min-width: 768px) {
+    .nav {
+      font-size: 1.1rem;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .nav-link {
+      padding: 20px 20px;
+    }
+  
+  }
