@@ -28,8 +28,8 @@ export function SignUp() {
         passwordAutoComplete={"new-password"}
         error={errorState}
       />
-      <Link to={"/login"}>
-        <p>Already have an account ? Go to login !</p>{" "}
+      <Link to={"/login"} style={{ textDecoration: "none", color: "white" }}>
+        <p>Already have an account ? Go to login !</p>
       </Link>
     </div>
   );

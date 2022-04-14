@@ -21,17 +21,19 @@ export function Login() {
     }
   };
   return (
-    <div className="Container">
-      <h1>Login Page</h1>
-      <UserNameAndPasswordForm
-        btnText={"Login"}
-        submitFormAction={login}
-        passwordAutoComplete={"current-password"}
-        error={errorState}
-      />
-      <Link to={"/signup"}>
-        <p>D'ont have an account ? Sing up !</p>{" "}
-      </Link>
+    <div className="holePage">
+      <div className="Container">
+        <h1>Login Page</h1>
+        <UserNameAndPasswordForm
+          btnText={"Login"}
+          submitFormAction={login}
+          passwordAutoComplete={"current-password"}
+          error={errorState}
+        />
+        <Link style={{ textDecoration: "none", color: "white" }} to={"/signup"}>
+          <p>Don't have an account ? Sign up !</p>
+        </Link>
+      </div>
     </div>
   );
 }
