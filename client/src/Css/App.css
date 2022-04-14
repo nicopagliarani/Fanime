@@ -64,7 +64,16 @@
   cursor: pointer;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-out;
+  background: white;
+  color: black;
 }
 .SocialMediaBtn:hover {
   width: 200px;
+}
+
+.SocialMediaBtn > p {
+  display: none;
+}
+.SocialMediaBtn:hover > p {
+  display: block;
 }

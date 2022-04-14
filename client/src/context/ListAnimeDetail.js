@@ -9,23 +9,13 @@ export function ListAnimeWrapper(props) {
   const [shoujo, setShoujo] = useState([]);
   const [sports, setSports] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
- const [isekai, setIsekai] = useState([]);
+  const [isekai, setIsekai] = useState([]);
   const [horror, setHorror] = useState([]);
   const [crime, setCrime] = useState([]);
   const [allAnimes, setAllAnimes] = useState([]);
-  let alltheAnimes = [
-    ...popAnime,
-    ...shounen,
-    ...seinen,
-    ...shoujo,
-    ...sports,
-    ...searchResult,
-    ...isekai,
-    ...horror,
-    ...crime,
-  ];
-  useEffect(()=> {
-    alltheAnimes = [
+
+  useEffect(() => {
+    const alltheAnimes = [
       ...popAnime,
       ...shounen,
       ...seinen,
@@ -33,11 +23,21 @@ export function ListAnimeWrapper(props) {
       ...sports,
       ...searchResult,
       ...isekai,
-    ...horror,
-    ...crime,
+      ...horror,
+      ...crime,
     ];
-    setAllAnimes(alltheAnimes)
-  },[popAnime])
+    setAllAnimes(alltheAnimes);
+  }, [
+    popAnime,
+    shounen,
+    seinen,
+    shoujo,
+    sports,
+    searchResult,
+    isekai,
+    horror,
+    crime,
+  ]);
   return (
     <AnimeDetail.Provider
       value={{
@@ -60,7 +60,7 @@ export function ListAnimeWrapper(props) {
         horror,
         setCrime,
         crime,
-}}
+      }}
     >
       {props.children}
     </AnimeDetail.Provider>

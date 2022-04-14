@@ -61,7 +61,7 @@ export function Favorites() {
     <>
       {favoriteAnime.map((element) => {
         return (
-          <div className="ContainerFavorite">
+          <div key={element._id} className="ContainerFavorite">
             <h1 style={{ color: "white" }}>{element.canonicalTitle}</h1>
             <div className="favoriyeImage">
               <img src={element.coverImage} alt="Anime img"></img>

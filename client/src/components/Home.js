@@ -65,180 +65,57 @@ export function Home() {
     fetchData();
   }, []);
 
-  const [isMouseOver, setIsMouseOver] = useState(false);
-  const onMouseHover = () => {
-    setIsMouseOver(true);
+  const toLink = (element) => {
+    return (
+      <Link key={element.id} to={`/home/${element.id}`}>
+        <img
+          className="singleImg"
+          src={element.attributes.posterImage.tiny}
+          alt="anime img"
+        />
+      </Link>
+    );
   };
-  const onMouseOut = () => {
-    setIsMouseOver(false);
-  };
+
   return user ? (
     <div>
       <div className="HomePage">
         <Search setSearchResult={setSearchResult} searchResult={searchResult} />
-
-        {/* {setSearchResult.filter((el) => {
-        return el.attributes.canonicalTitle.include(filterSearch);
-      })} */}
         <h1>Most popular anime</h1>
-        <div className="HomeCategories">
-          {popAnime.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{popAnime.map(toLink)}</div>
         <h1>Seinen Anime</h1>
-        <div className="HomeCategories">
-          {seinen.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{seinen.map(toLink)}</div>
         <h1>Sports Anime</h1>
-        <div className="HomeCategories">
-          {sports.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{sports.map(toLink)}</div>
 
         <h1>Isekai Animes</h1>
-        <div className="HomeCategories">
-          {isekai.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{isekai.map(toLink)}</div>
 
         <h1>Shoujo Anime</h1>
-        <div className="HomeCategories">
-          {shoujo.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{shoujo.map(toLink)}</div>
         <h1>Shounen Anime</h1>
-        <div className="HomeCategories">
-          {shounen.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{shounen.map(toLink)}</div>
 
         <h1>Horror</h1>
-        <div className="HomeCategories">
-          {horror.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{horror.map(toLink)}</div>
 
         <h1>Crime</h1>
-        <div className="HomeCategories">
-          {crime.map((element) => {
-            return (
-              <>
-                <Link to={`/home/${element.id}`}>
-                  <img
-                    className="singleImg"
-                    src={element.attributes.posterImage.tiny}
-                    alt="anime img"
-                  />
-                </Link>
-              </>
-            );
-          })}
-        </div>
+        <div className="HomeCategories">{crime.map(toLink)}</div>
       </div>
       <div className="footerWrapper">
-        <div
-          onMouseOver={onMouseHover}
-          onMouseOut={onMouseOut}
-          className="SocialMediaBtn"
-        >
+        <div className="SocialMediaBtn">
           <img src={youtube} />
-          {isMouseOver && <p>Youtube</p>}
+          <p>Youtube</p>
         </div>
 
-        <div
-          onMouseOver={onMouseHover}
-          onMouseOut={onMouseOut}
-          className="SocialMediaBtn"
-        >
+        <div className="SocialMediaBtn">
           <img src={facebook} />
-          {isMouseOver && <p>facebook</p>}
+          <p>facebook</p>
         </div>
 
-        <div
-          onMouseOver={onMouseHover}
-          onMouseOut={onMouseOut}
-          className="SocialMediaBtn"
-        >
+        <div className="SocialMediaBtn">
           <img src={twitter} />
-          {isMouseOver && <p>twitter</p>}
+          <p>twitter</p>
         </div>
       </div>
       <p
