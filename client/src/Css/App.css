@@ -46,55 +46,25 @@
   box-sizing: border-box;
   display: grid;
   grid-auto-flow: column;
+  width: 100%;
   height: 100%;
   place-items: center;
   margin-bottom: 2%;
 }
-.footerWrapper .SocialBtn {
-  display: inline-block;
+
+.SocialMediaBtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 60px;
   width: 60px;
   overflow: hidden;
-  margin: 0 5px;
   background: transparent;
   border-radius: 50px;
   cursor: pointer;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-out;
 }
-.footerWrapper .SocialBtn:hover {
+.SocialMediaBtn:hover {
   width: 200px;
-}
-.footerWrapper .SocialBtn .icon {
-  display: inline-block;
-  text-align: center;
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  line-height: 60px;
-}
-.footerWrapper .SocialBtn:nth-child(1):hover .icon {
-  background-color: #ffffff;
-}
-.footerWrapper .SocialBtn:nth-child(2):hover .icon {
-  background-color: #ffffff;
-}
-
-.footerWrapper .SocialBtn:nth-child(3):hover .icon {
-  background-color: #ffffff;
-}
-
-.footerWrapper .SocialBtn .icon img {
-  font-size: 25px;
-  line-height: 60px;
-}
-
-.footerWrapper .SocialBtn span {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 60px;
-  padding-left: 25px;
-  text-align: center;
-  color: black;
 }

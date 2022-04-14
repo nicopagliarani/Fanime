@@ -68,6 +68,13 @@ export function Home() {
     fetchData();
   }, []);
 
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const onMouseHover = () => {
+    setIsMouseOver(true);
+  };
+  const onMouseOut = () => {
+    setIsMouseOver(false);
+  };
   return user ? (
     <div>
       <div className="HomePage">
@@ -210,23 +217,31 @@ export function Home() {
         </div>
       </div>
       <div className="footerWrapper">
-        <div className="SocialBtn">
-          <div className="icon">
-            <img src={facebook} />
-          </div>
-          <span>Facebook</span>
+        <div
+          onMouseOver={onMouseHover}
+          onMouseOut={onMouseOut}
+          className="SocialMediaBtn"
+        >
+          <img src={youtube} />
+          {isMouseOver && <p>Youtube</p>}
         </div>
-        <div className="SocialBtn">
-          <div className="icon">
-            <img src={youtube} />
-          </div>
-          <span>Youtube</span>
+
+        <div
+          onMouseOver={onMouseHover}
+          onMouseOut={onMouseOut}
+          className="SocialMediaBtn"
+        >
+          <img src={facebook} />
+          {isMouseOver && <p>facebook</p>}
         </div>
-        <div className="SocialBtn">
-          <div className="icon">
-            <img src={twitter} />
-          </div>
-          <span>Twitter</span>
+
+        <div
+          onMouseOver={onMouseHover}
+          onMouseOut={onMouseOut}
+          className="SocialMediaBtn"
+        >
+          <img src={twitter} />
+          {isMouseOver && <p>twitter</p>}
         </div>
       </div>
       <p

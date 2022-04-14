@@ -26,6 +26,7 @@ export function Favorites() {
     }
   }, []);
   const [favoriteAnime, setFavoriteAnime] = useState([]);
+
   useEffect(() => {
     const getFavoriteAnime = async () => {
       try {
@@ -61,13 +62,9 @@ export function Favorites() {
       {favoriteAnime.map((element) => {
         return (
           <div className="ContainerFavorite">
-            <h1>{element.canonicalTitle}</h1>
+            <h1 style={{ color: "white" }}>{element.canonicalTitle}</h1>
             <div className="favoriyeImage">
-              <img
-                src={element.coverImage}
-                alt="Anime img"
-                style={{ width: "200px" }}
-              ></img>
+              <img src={element.coverImage} alt="Anime img"></img>
             </div>
             <div className="BtnDelete">
               <button className="bn31" onClick={() => deleteAnime(element._id)}>

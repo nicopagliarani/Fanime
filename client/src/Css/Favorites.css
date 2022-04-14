@@ -11,20 +11,21 @@
   box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
   scrollbar-width: auto;
 }
+
 .ContainerFavorite {
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  width: 470px;
+  background-color: rgb(19, 18, 18);
+  justify-content: space-around;
   text-align: center;
-  border: 5px solid red;
-}
-
-.flex-favorite {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 3%;
+  padding: 1%;
+  border: 5px solid transparent;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 1);
+  border-radius: 15px;
 }
 
 .BtnDelete {
-  display: block;
+  display: inline-block;
 }
