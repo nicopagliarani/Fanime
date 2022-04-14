@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./Css/App.css";
 import { Custom404Page } from "./components/Custom404Page";
 import { Favorites } from "./components/Favorites";
@@ -11,35 +11,10 @@ import { Profile } from "./components/Profile";
 import { SearchResultPage } from "./components/SearchResultPage";
 import { SignUp } from "./components/SignUp";
 import { AnimeDetail } from "./context/ListAnimeDetail";
-import { AuthContext } from "./context/AuthProviderWrapper";
-import { API_BASE_URL } from "./consts";
-import axios from "axios";
-import { Comment } from "./components/Comment";
 
 function App() {
-  const {
-    searchResult,
-    setPopAnime,
-    setShounen,
-    setSeinen,
-    setShoujo,
-    setSports,
-  } = useContext(AnimeDetail);
-  const { user, addUserToContext } = useContext(AuthContext);
-  const verify = async () => {
-    const stayLogin = await axios.get(`${API_BASE_URL}/api/verify`);
-    return stayLogin;
-  };
-  const getAllAnimes = async () => {
-    const data = verify.data;
-    setPopAnime(data.popularityAnime);
-    setShounen(data.shounenAnime);
-    setSeinen(data.seinenAnime);
-    setShoujo(data.shoujoAnime);
-    setSports(data.sportsAnime);
-  };
-  const navigate = useNavigate();
-  const checkUser = "";
+  const { searchResult } = useContext(AnimeDetail);
+
   return (
     <div className="App">
       <Routes>

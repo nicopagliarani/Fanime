@@ -6,10 +6,8 @@ export function AuthProviderWrapper(props) {
   const [user, setUser] = useState(null);
 
   const addUserToContext = (newUser) => {
-    if (user !== null) return;
     setUser(newUser);
   };
-
   const removeUserFromContext = () => {
     setUser(null);
   };

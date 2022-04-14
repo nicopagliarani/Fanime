@@ -57,7 +57,8 @@ router.post("/logout", isLoggedIn, async (req, res, next) => {
 
 router.get("/verify", async (req, res, next) => {
   if (req.session.user) {
-    const user = req.session.user;
+    const user = await User.findById(req.session.user._id);
+    console.log("here is the user session", user);
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
     );
@@ -83,6 +84,21 @@ router.get("/verify", async (req, res, next) => {
     );
     const sportsAnime = sports.data.data;
 
+    const isekai = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=isekai;page[limit]=20"
+    );
+    const isekaiAnime = isekai.data.data;
+
+    const crime = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=crime;page[limit]=20"
+    );
+    const crimeAnime = crime.data.data;
+
+    const horror = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=horror;page[limit]=20"
+    );
+    const horrorAnime = horror.data.data;
+
     res.json({
       popularityAnime,
       shounenAnime,
@@ -90,6 +106,9 @@ router.get("/verify", async (req, res, next) => {
       shoujoAnime,
       sportsAnime,
       user,
+      isekaiAnime,
+      crimeAnime,
+      horrorAnime,
     });
   } else {
     return res.json(null);

@@ -70,3 +70,10 @@
 .SocialMediaBtn:hover {
   width: 200px;
 }
+
+.SocialMediaBtn > p {
+  display: none;
+}
+.SocialMediaBtn:hover > p {
+  display: block;
+}

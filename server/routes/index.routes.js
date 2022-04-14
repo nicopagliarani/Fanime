@@ -7,4 +7,6 @@ router.use(require("./anime.routes"));
 
 router.use(require("./auth.routes"));
 
+router.use(require("./cloudinary"));
+
 module.exports = router;
