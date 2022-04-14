@@ -2,8 +2,9 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { API_BASE_URL } from "../consts";
 import { UserNameAndPasswordForm } from "./UserNameAndPasswordForm";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProviderWrapper";
+import "../Css/Login.css";
 
 export function Login() {
   const [errorState, SetErrorState] = useState();
@@ -20,14 +21,19 @@ export function Login() {
     }
   };
   return (
-    <div>
-      <h1>Login Page</h1>
-      <UserNameAndPasswordForm
-        btnText={"Login"}
-        submitFormAction={login}
-        passwordAutoComplete={"current-password"}
-        error={errorState}
-      />
+    <div className="holePage">
+      <div className="Container">
+        <h1>Login Page</h1>
+        <UserNameAndPasswordForm
+          btnText={"Login"}
+          submitFormAction={login}
+          passwordAutoComplete={"current-password"}
+          error={errorState}
+        />
+        <Link style={{ textDecoration: "none", color: "white" }} to={"/signup"}>
+          <p>Don't have an account ? Sign up !</p>
+        </Link>
+      </div>
     </div>
   );
 }

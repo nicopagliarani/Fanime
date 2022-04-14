@@ -40,3 +40,31 @@
   scrollbar-width: 15px;
 }
 
+.footerWrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  margin-bottom: 2%;
+}
+
+.SocialMediaBtn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-out;
+}
+.SocialMediaBtn:hover {
+  width: 200px;
+}

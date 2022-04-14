@@ -8,7 +8,7 @@ const {
   requireToBeLoggedOut,
 } = require("../middlewares/IsLoggedIn");
 
-router.get("/home", async (req, res, next) => {
+router.get("/home", isLoggedIn, async (req, res, next) => {
   try {
     const popularity = await axios.get(
       "https://kitsu.io/api/edge/anime?sort=popularityRank;page[limit]=20"
@@ -35,12 +35,30 @@ router.get("/home", async (req, res, next) => {
     );
     const sportsAnime = sports.data.data;
 
+    const isekai = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=isekai;page[limit]=20"
+    );
+    const isekaiAnime = isekai.data.data;
+
+    const horror = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=horror;page[limit]=20"
+    );
+    const horrorAnime = horror.data.data;
+
+    const crime = await axios.get(
+      "https://kitsu.io/api/edge/anime?sort=popularityRank;filter[categories]=crime;page[limit]=20"
+    );
+    const crimeAnime = crime.data.data;
+
     res.json({
       popularityAnime,
       shounenAnime,
       seinenAnime,
       shoujoAnime,
       sportsAnime,
+      isekaiAnime,
+      crimeAnime,
+      horrorAnime,
     });
   } catch (err) {
     res.status(400).json({
@@ -80,7 +98,7 @@ user.favoriteAnimes.push(newAnime._id);
   }
 });
 
-router.get("/showfavoriteAnimes", async (req, res) => {
+router.get("/showfavoriteAnimes", isLoggedIn, async (req, res) => {
   const userId = req.session.user._id;
   const user = await User.findById(userId).populate("favoriteAnimes");
   showFavorites = user.favoriteAnimes;
@@ -123,7 +141,7 @@ router.get("/getComments/:animeName", isLoggedIn, async (req, res) => {
   res.json({ showComments });
   return;
 });
-router.get("/search/:anime", async (req, res, next) => {
+router.get("/search/:anime", isLoggedIn, async (req, res, next) => {
   const {
     data: { data },
   } = await axios.get(

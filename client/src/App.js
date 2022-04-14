@@ -4,7 +4,6 @@ import "./Css/App.css";
 import { Custom404Page } from "./components/Custom404Page";
 import { Favorites } from "./components/Favorites";
 import { DetailAnimePage } from "./components/DetailAnimePage";
-import { FirstPage } from "./components/FirstPage";
 import { Home } from "./components/Home";
 import { LayoutComponent } from "./components/LayoutComponent";
 import { Login } from "./components/Login";
@@ -45,7 +44,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<LayoutComponent />}>
-          <Route path="/" element={<FirstPage />} />
+          <Route path="/" element={<Login />} />
           <Route path="/home">
             <Route index element={<Home />} />
             <Route path=":id" element={<DetailAnimePage />} />
@@ -60,7 +59,7 @@ function App() {
           <Route path="/showfavoriteAnimes" element={<Favorites />} />
           <Route path="*" element={<Custom404Page />} />
         </Route>
-       </Routes>
+      </Routes>
     </div>
   );
 }

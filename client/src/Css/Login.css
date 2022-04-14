@@ -1,0 +1,38 @@
+.holePage {
+  display: grid;
+  place-items: center;
+}
+.Container {
+  padding: 0;
+  margin: 15% auto;
+  width: 500px;
+  background: rgb(44, 44, 44);
+  border-radius: 50px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+}
+
+.UsernameInput {
+  display: block;
+  outline: none;
+  border-radius: 15px;
+  margin: 10px auto;
+  border: none;
+}
+.passwordInput {
+  display: block;
+  outline: none;
+  border-radius: 15px;
+  border: none;
+}
+
+.btnLog {
+  display: block;
+  border-radius: 10px;
+  margin: 10px auto;
+  border: none;
+}
+.btnLog:hover {
+  background-color: gray;
+}
