@@ -24,6 +24,10 @@ function App() {
     setSeinen,
     setShoujo,
     setSports,
+    setIsekai,
+    setHorror,
+    setCrime,
+
   } = useContext(AnimeDetail);
   const { user, addUserToContext } = useContext(AuthContext);
   const verify = async () => {
@@ -37,6 +41,9 @@ function App() {
     setSeinen(data.seinenAnime);
     setShoujo(data.shoujoAnime);
     setSports(data.sportsAnime);
+    setIsekai(data.setIseaki);
+    setHorror(data.setHorror);
+    setCrime(data.setCrime);
   };
   const navigate = useNavigate();
   const checkUser = "";
