@@ -69,13 +69,7 @@ if(el.canonicalTitle == req.body.canonicalTitle){
       coverImage: req.body.coverImage,
     });
     await newAnime.save();
-    //  console.log(newAnime);
-    // console.log(req.session.user);
-    
-    // const userId= '624edb94825a668c62728cc8'
-    
-    // console.log(newAnime._id);
-    user.favoriteAnimes.push(newAnime._id);
+user.favoriteAnimes.push(newAnime._id);
     await user.save();
      res.json("Favourite Anime added");}
   } catch (err) {
