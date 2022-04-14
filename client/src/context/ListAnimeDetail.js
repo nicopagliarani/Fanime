@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const AnimeDetail = createContext();
 
@@ -9,8 +9,8 @@ export function ListAnimeWrapper(props) {
   const [shoujo, setShoujo] = useState([]);
   const [sports, setSports] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
-  //const [allAnimes, setAllAnimes] = useState([]);
-  const allAnimes = [
+  const [allAnimes, setAllAnimes] = useState([]);
+  let alltheAnimes = [
     ...popAnime,
     ...shounen,
     ...seinen,
@@ -18,6 +18,17 @@ export function ListAnimeWrapper(props) {
     ...sports,
     ...searchResult,
   ];
+  useEffect(()=> {
+    alltheAnimes = [
+      ...popAnime,
+      ...shounen,
+      ...seinen,
+      ...shoujo,
+      ...sports,
+      ...searchResult,
+    ];
+    setAllAnimes(alltheAnimes)
+  },[popAnime])
   return (
     <AnimeDetail.Provider
       value={{

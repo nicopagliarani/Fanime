@@ -43,9 +43,6 @@ export function Home() {
       }
       stayLogin();
     }
-  }, []);
-
-  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_BASE_URL}/api/home`);
@@ -63,6 +60,8 @@ export function Home() {
     };
     fetchData();
   }, []);
+
+  
 
   return (user ? (
     <div className="HomePage">

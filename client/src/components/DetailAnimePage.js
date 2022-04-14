@@ -12,40 +12,65 @@ import axios from "axios";
 export function DetailAnimePage() {
   const navigate = useNavigate();
   const { user,addUserToContext } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (!user) {
-      
-      const stayLogin = async()=>{ 
-        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
-      if(!userFromSession.data) {
-        navigate("/login");
-      }else{
-        addUserToContext(userFromSession.data.user)
-      }
-      }
-      stayLogin();
-    }
-  }, []);
   const { id } = useParams();
-
-  const [singleAnime, setSingleAnime] = useState(null);
-  const { allAnimes } = useContext(AnimeDetail);
+const [singleAnime, setSingleAnime] = useState(null);
+const {
+  setPopAnime,
+  
+  setShounen,
+ 
+  setSeinen,
+  
+  setShoujo,
+  
+  setSports,
+ 
+  allAnimes,
+} = useContext(AnimeDetail);
+const [alltheAnimes,setAlltheAnimes]= useState(allAnimes);
+  
 
   function choseAnime() {
-    const choseTheSingleAnime = allAnimes.filter((el) => {
+    const choseTheSingleAnime = alltheAnimes.filter((el) => {
       console.log(el.id, id);
       return el.id == id;
     });
     setSingleAnime(choseTheSingleAnime[0]);
   }
-
   useEffect(() => {
-    choseAnime();
-  }, []);
-  return ( user ? (
+    if (!user) {
+      console.log('Fetching user');
+      const stayLogin = async()=>{ 
+        const userFromSession = await axios.get(`${API_BASE_URL}/api/verify`); 
+      if(!userFromSession.data) {
+        navigate("/login");
+      }else{
+        addUserToContext(userFromSession.data.user) 
+        setPopAnime(userFromSession.data.popularityAnime);
+        setShounen(userFromSession.data.shounenAnime);
+        setSeinen(userFromSession.data.seinenAnime);
+        setShoujo(userFromSession.data.shoujoAnime);
+        setSports(userFromSession.data.sportsAnime);
+      }
+      }
+      stayLogin();
+    }
+    }, []);
+
+useEffect(()=> {
+  // console.log('Filtering Anime', allAnimes);
+  setAlltheAnimes(allAnimes);
+  const choseTheSingleAnime = allAnimes.filter((el) => {
+    console.log(el.id, id);
+    return el.id == id;
+  });
+  setSingleAnime(choseTheSingleAnime[0]);
+},[allAnimes,user]) 
+
+  
+return ( user  ? (
     <>
-      {console.log(singleAnime)}
+      {/* {console.log(singleAnime, "This is the single anime")} */}
       {singleAnime ? (
         <div>
           <div className="center-detail-anime">
@@ -78,7 +103,7 @@ export function DetailAnimePage() {
       ) : (
         "loading"
       )}
-      {console.log("singleAnime =>", singleAnime)}
+      {/* {console.log("singleAnime =>", singleAnime)} */}
     </>) : <p>Loading</p>
   );
 }
