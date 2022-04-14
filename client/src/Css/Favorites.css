@@ -1,32 +1,30 @@
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  background-color: rgb(28, 28, 28);
+}
 
-.imgFavorite {
-    padding: 0px 4px 0px 4px;
-    transition: 0.2s ease-in;
-    margin-right:50px;
-    }
-  .imgFavorite:hover {
-    cursor: pointer;
-    transform: scale(1.3);
-  }
-  
-  ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    background-color: rgb(28, 28, 28);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-clip: padding-box;
-    background-color: #9a9a9a;
-    border-radius: 9px;
-    border: 3px solid transparent;
-    box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
-    scrollbar-width: 15px;
-  }
-  .favorite{text-align: center;
-};
+::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  background-color: #9a9a9a;
+  border-radius: 9px;
+  border: 3px solid transparent;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  scrollbar-width: auto;
+}
+.ContainerFavorite {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 5px solid red;
+}
 
-.flex-favorite{
-    display:flex;
-    align-items: center;
-    justify-content: center;
+.flex-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BtnDelete {
+  display: block;
 }
