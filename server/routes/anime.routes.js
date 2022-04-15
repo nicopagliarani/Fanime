@@ -71,25 +71,26 @@ router.post("/saveFavoriteAnime", async (req, res) => {
   // console.log(req.body);
   try {
     const userId = req.session.user._id;
-    const user = await User.findById(userId).populate('favoriteAnimes');
-    let favoriteExist= false;
-    user.favoriteAnimes.forEach((el)=>{
-      console.log(el,req.body.canonicalTitle, 'This is pizza')
-if(el.canonicalTitle == req.body.canonicalTitle){
-  favoriteExist=true
- return
-}
-    })
-    if(!favoriteExist){
-    const newAnime = await new Anime({
-      canonicalTitle: req.body.canonicalTitle,
-      synopsis: req.body.synopsis,
-      coverImage: req.body.coverImage,
+    const user = await User.findById(userId).populate("favoriteAnimes");
+    let favoriteExist = false;
+    user.favoriteAnimes.forEach((el) => {
+      console.log(el, req.body.canonicalTitle, "This is pizza");
+      if (el.canonicalTitle == req.body.canonicalTitle) {
+        favoriteExist = true;
+        return;
+      }
     });
-    await newAnime.save();
-user.favoriteAnimes.push(newAnime._id);
-    await user.save();
-     res.json("Favourite Anime added");}
+    if (!favoriteExist) {
+      const newAnime = await new Anime({
+        canonicalTitle: req.body.canonicalTitle,
+        synopsis: req.body.synopsis,
+        coverImage: req.body.coverImage,
+      });
+      await newAnime.save();
+      user.favoriteAnimes.push(newAnime._id);
+      await user.save();
+      res.json("Favourite Anime added");
+    }
   } catch (err) {
     console.log(err);
     res.status(400).json({
@@ -113,12 +114,12 @@ router.post("/createComment", isLoggedIn, async (req, res, next) => {
       comment: req.body.comment,
       animeName: req.body.animeName,
     });
- 
+
     await comment.save();
-   
+
     const userId = req.session.user._id;
     const user = await User.findById(userId);
-  
+
     user.comment.push(comment._id);
     await user.save();
     res.json({ message: "Succesfully created comment", comment });
@@ -130,14 +131,14 @@ router.post("/createComment", isLoggedIn, async (req, res, next) => {
 });
 router.get("/getComments/:animeName", isLoggedIn, async (req, res) => {
   animeName = req.params.animeName;
-  
+
   const userId = req.session.user._id;
   const user = await User.findById(userId).populate("comment");
-  
+
   showComments = user.comment.filter((element) => {
     return element.animeName == animeName;
   });
-  
+
   res.json({ showComments });
   return;
 });
@@ -151,7 +152,6 @@ router.get("/search/:anime", isLoggedIn, async (req, res, next) => {
 });
 
 router.delete("/deleteAnime/:id", async (req, res, next) => {
-  
   try {
     const id = req.params.id;
     await Anime.findByIdAndDelete(id);
@@ -161,7 +161,6 @@ router.delete("/deleteAnime/:id", async (req, res, next) => {
       .status(400)
       .json({ errorMessage: "Error in deleting anime! " + err.message });
   }
-  
 });
 
 module.exports = router;
