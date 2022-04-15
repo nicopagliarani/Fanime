@@ -29,19 +29,22 @@ export function Search({ setSearchResult, searchResult }) {
             handleSubmit(even);
           }}
         >
-          <div className="flex-icon">
-          <input
-            className="searchText"
-            value={filterSearch}
-            type="text"
-            onChange={handleFilterInput}
-            placeholder="Search for any anime"
-          />
-          <button style={{ width: "50px" }} className="searchBtn" type="submit">
-            <img style={{ width: "20px" }} src={loop} alt="Loop" />
-          </button>
+          <div className="flex-icon" style={{ width: "500px" }}>
+            <input
+              className="searchText"
+              value={filterSearch}
+              type="text"
+              onChange={handleFilterInput}
+              placeholder="Search for any anime"
+            />
+            <button
+              style={{ width: "50px" }}
+              className="searchBtn"
+              type="submit"
+            >
+              <img style={{ width: "20px" }} src={loop} alt="Loop" />
+            </button>
           </div>
-          
         </form>
       </div>
     </div>
