@@ -5,6 +5,7 @@ import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
 import { useContext, useEffect } from "react";
 import "../Css/Comment.css";
+import "../Css/DetailAnimePage.css";
 
 export function Comment({ animeName }) {
   const [backendComments, setBackendComments] = useState([]);
@@ -46,11 +47,17 @@ export function Comment({ animeName }) {
   };
 
   return (
-    <div>
-      <h3>Comments</h3>
+    <div className="holeComments">
+      <h2>Comment Section</h2>
       <div className="comment-flex">
         <form>
           <textarea
+            style={{
+              width: "400px",
+              height: "50px",
+              fontSize: "1.2rem",
+              outline: "none",
+            }}
             className="textArea"
             value={comment}
             onChange={(e) => {
@@ -58,8 +65,8 @@ export function Comment({ animeName }) {
             }}
             name="comment"
           ></textarea>
-          <button className="bn31" onClick={(e) => clickHandler(e)}>
-            <span className="bn31span">Submit</span>
+          <button className="BtnSubmitComment" onClick={(e) => clickHandler(e)}>
+            <span className="BtnSubmitCommentSpan">Submit</span>
           </button>
         </form>
       </div>

@@ -17,7 +17,7 @@
 
 .nav-link:hover {
   text-decoration: none;
-  color: #343a40;
+  color: #e91e63;
 }
 .nav-link.current {
   border-bottom: 1px solid #38d9a9;

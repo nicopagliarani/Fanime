@@ -3,6 +3,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../consts";
 import { AuthContext } from "../context/AuthProviderWrapper";
+import "../Css/Profile.css";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -56,9 +57,10 @@ export function Profile() {
   };
 
   return user ? (
-    <div>
+    <div className="ProfileWrapper">
       {console.log(user)}
       <h1>Profile Page</h1>
+      <hr></hr>
       {user.imageUrl && (
         <img
           src={user.imageUrl}
@@ -72,19 +74,42 @@ export function Profile() {
         />
       )}
       {user && <h2>Welcome, {user.username}</h2>}
-      <div>
-        <h3>Update your User Image:</h3>
+      <hr></hr>
+      <div className="AddImage">
+        <h3 style={{ margin: "50px" }}>Update your User Image:</h3>
         <form
+          style={{ paddingLeft: "10px" }}
           onSubmit={handleUserImage}
           method="post"
           encType="multipart/form-data"
         >
-          <input type="file" accept="image/png, image/jpg" name="imageUrl" />
-          <button type="submit">Update</button>
+          <input
+            className="BtnR"
+            type="file"
+            accept="image/png, image/jpg"
+            name="imageUrl"
+          />
+          <button className="BtnL" type="submit">
+            Update
+          </button>
         </form>
       </div>
-
-      <button onClick={logout}>Logout</button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <hr></hr>
+      <br></br>
+      <br></br>
+      <br></br>
+      <button
+        className="LogoutBtn"
+        style={{ width: "200px", height: "50px" }}
+        onClick={logout}
+      >
+        Logout
+      </button>
     </div>
   ) : (
     <p>Loading</p>

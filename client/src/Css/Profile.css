@@ -1,0 +1,43 @@
+.ProfileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ProfileWrapper > hr {
+  width: 45%;
+}
+.LogoutBtn {
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.LogoutBtn:hover {
+  background-color: gray;
+}
+.AddImage {
+  width: 350px;
+}
+
+.BtnL {
+  background-color: white;
+  border-radius: 20px;
+  margin: 1%;
+  cursor: pointer;
+  border: none;
+}
+.BtnL:hover {
+  background-color: gray;
+}
+.BtnR {
+  color: black;
+  background-color: rgb(255, 252, 245);
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+}
+.BtnR:hover {
+  background-color: gray;
+}

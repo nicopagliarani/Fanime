@@ -1,62 +1,51 @@
+.HolePage {
+  margin: 5% 8% 5% 8%;
+  font-size: 1.4rem;
+  box-sizing: border-box;
+}
+
+.HolePage h1 {
+  text-align: center;
+  font-size: 4.5rem;
+}
+
+.DetailImg {
+  width: 390px;
+  height: 554px;
+}
+.DetailList {
+  margin: 2%;
+}
+.DetailList ul {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+.DetailList li {
+  padding-top: 10px;
+}
 .DetailPage {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0% 5% 5% 5%;
-}
-body {
-  background-color: rgb(28, 28, 28);
-  color: rgb(255, 244, 244);
-  margin:20px;
-}
-.DetailImg {
-  width: 0;
+  align-self: flex-start;
+  flex-direction: row;
 }
 
-/*  Button  */
-.bn31 {
-  background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
-  border-radius: 40px;
-  box-sizing: border-box;
-  color: #00a84f;
-  display: block;
-  height: 50px;
-  font-size: 1.4em;
-  padding: 4px;
-  position: relative;
-  text-decoration: none;
-  width: 7em;
-  z-index: 2;
+.BtnFav {
+  background: whitesmoke;
+  width: 10%;
+  padding: 1%;
+  border-radius: 15px;
+  margin-top: 1%;
+  transition: 0.5s ease-out;
+  font-size: 1.5rem;
+  border: none;
 }
 
-.bn31:hover {
-  color: #fff;
-}
-.bn31 .bn31span {
-  align-items: center;
-  background: #0e0e10;
-  border-radius: 40px;
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  transition: 0.5s ease;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.BtnFav:hover {
+  box-shadow: inset 300px 0 0 0 #e91e63;
 }
 
-.bn31:hover .bn31span {
-  background: transparent;
-}
-.center-detail-anime{
-  text-align:center;
-}
-.flex-detail-anime{display:flex;
-align-items: center ;
-justify-content: center;
-gap: 30px;
-text-align:justify;}
-.textArea{
-  margin-right:50px;
+.DetailSynopis {
+  margin-top: 5%;
 }
