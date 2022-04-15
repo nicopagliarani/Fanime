@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../consts";
 import "../Css/Favorites.css";
 import { AuthContext } from "../context/AuthProviderWrapper";
-import { Link } from "react-router-dom";
-import { AnimeDetail } from "../context/ListAnimeDetail";
 
 export function Favorites() {
   const navigate = useNavigate();
@@ -34,9 +32,7 @@ export function Favorites() {
           `${API_BASE_URL}/api/showfavoriteAnimes`
         );
         const data = response.data;
-        // console.log(data);
         setFavoriteAnime(data.showFavorites);
-        // console.log(data.showFavorites)
       } catch (err) {
         console.log("We got an error");
         console.error(err);
@@ -58,7 +54,7 @@ export function Favorites() {
     });
   }
   return user ? (
-    <>
+    <div>
       {favoriteAnime.map((element) => {
         return (
           <div key={element._id} className="ContainerFavorite">
@@ -66,16 +62,19 @@ export function Favorites() {
             <div className="favoriyeImage">
               <img src={element.coverImage} alt="Anime img"></img>
             </div>
-            <div className="BtnDelete">
-              <button className="bn31" onClick={() => deleteAnime(element._id)}>
-                <span className="bn31span">Delete</span>
+            <div>
+              <button
+                className="BtnDelete"
+                onClick={() => deleteAnime(element._id)}
+              >
+                <span className="BtnDeleteSpan">Delete</span>
               </button>
             </div>
           </div>
         );
       })}
       {console.log(favoriteAnime)}
-    </>
+    </div>
   ) : (
     <p>Loading</p>
   );

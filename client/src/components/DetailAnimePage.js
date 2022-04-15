@@ -59,16 +59,18 @@ export function DetailAnimePage() {
     <>
       {/* {console.log(singleAnime, "This is the single anime")} */}
       {singleAnime ? (
-        <div>
-          <div className="center-detail-anime">
-            <h1>{singleAnime.attributes.canonicalTitle}</h1>
-            <h2>Popularity rank : {singleAnime.attributes.popularityRank}</h2>
-            <div className="flex-detail-anime">
+        <div className="HolePage">
+          <h1>{singleAnime.attributes.canonicalTitle}</h1>
+          <div className="DetailPage">
+            <div className="imgWrapper">
               <img
-                className="imageDetailAnime "
                 src={singleAnime.attributes.posterImage.medium}
                 alt={singleAnime.attributes.canonicalTitle}
               />
+            </div>
+            <div className="DetailList">
+              <h2>Popularity rank : {singleAnime.attributes.popularityRank}</h2>
+              <hr></hr>
               <ul>
                 <li>
                   AverageRating : {singleAnime.attributes.averageRating}/100
@@ -76,21 +78,26 @@ export function DetailAnimePage() {
                 <li>
                   First episode came out :{singleAnime.attributes.createdAt}
                 </li>
-                <li>
-                  last episode came out :{singleAnime.attributes.endDate}{" "}
-                </li>
+                <li>last episode came out :{singleAnime.attributes.endDate}</li>
               </ul>
-              <ButtonFavorite
-                canonicalTitle={singleAnime.attributes.canonicalTitle}
-                coverImage={singleAnime.attributes.posterImage.tiny}
-                synopsis={singleAnime.attributes.synopsis}
-                clickHandler={singleAnime}
-              />
             </div>
           </div>
 
-          <p>{singleAnime.attributes.synopsis}</p>
+          <ButtonFavorite
+            canonicalTitle={singleAnime.attributes.canonicalTitle}
+            coverImage={singleAnime.attributes.posterImage.small}
+            synopsis={singleAnime.attributes.synopsis}
+            clickHandler={singleAnime}
+            className="BtnFav"
+          />
 
+          <div className="DetailSynopis">
+            <hr />
+            <h2>Synopsis :</h2>
+            <p>{singleAnime.attributes.synopsis}</p>
+          </div>
+
+          <hr></hr>
           <Comment animeName={singleAnime.attributes.canonicalTitle}></Comment>
         </div>
       ) : (

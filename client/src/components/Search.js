@@ -22,24 +22,25 @@ export function Search({ setSearchResult, searchResult }) {
   };
   useEffect(() => {});
   return (
-    <div className="search-box">
-      <form
-        className="searchBar"
-        onSubmit={(even) => {
-          handleSubmit(even);
-        }}
-      >
-        <input className = "search-text"
-          value={filterSearch}
-          type="text"
-          onChange={handleFilterInput}
-          placeholder="Search for any anime"
-        />
-        <button className="search-btn" type="submit">
-          <span>Search</span>
-        </button>
-      </form>
+    <div className="searchWrapper">
+      <div className="searchBox">
+        <form
+          onSubmit={(even) => {
+            handleSubmit(even);
+          }}
+        >
+          <input
+            className="searchText"
+            value={filterSearch}
+            type="text"
+            onChange={handleFilterInput}
+            placeholder="Search for any anime"
+          />
+          <button style={{ width: "50px" }} className="searchBtn" type="submit">
+            <img style={{ width: "20px" }} src={loop} alt="Loop" />
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
-//
