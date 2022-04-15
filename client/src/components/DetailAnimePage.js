@@ -76,9 +76,26 @@ export function DetailAnimePage() {
                   AverageRating : {singleAnime.attributes.averageRating}/100
                 </li>
                 <li>
-                  First episode came out :{singleAnime.attributes.createdAt}
+                  First episode came out :{singleAnime.attributes.startDate}
                 </li>
-                <li>last episode came out :{singleAnime.attributes.endDate}</li>
+                <li>Last episode came out :{singleAnime.attributes.endDate}</li>
+                <li>Status : {singleAnime.attributes.status}</li>
+                <li>Age Rating : {singleAnime.attributes.ageRating}</li>
+                <li>
+                  Age Rating Guide : {singleAnime.attributes.ageRatingGuide}
+                </li>
+                <li>
+                  Number of episodes : {singleAnime.attributes.episodeCount}
+                </li>
+                <li>
+                  Time of the episodes : {singleAnime.attributes.episodeLength}
+                  minutes
+                </li>
+                <li>
+                  Total view time of the anime :{" "}
+                  {singleAnime.attributes.totalLength}
+                  minutes
+                </li>
               </ul>
             </div>
           </div>
