@@ -81,19 +81,19 @@ export function Home() {
     <div>
       <div className="HomePage">
         <Search setSearchResult={setSearchResult} searchResult={searchResult} />
-        <h1>Most popular anime</h1>
+        <h1>Most popular animes</h1>
         <div className="HomeCategories">{popAnime.map(toLink)}</div>
-        <h1>Seinen Anime</h1>
+        <h1>Seinen</h1>
         <div className="HomeCategories">{seinen.map(toLink)}</div>
-        <h1>Sports Anime</h1>
+        <h1>Sports</h1>
         <div className="HomeCategories">{sports.map(toLink)}</div>
 
-        <h1>Isekai Animes</h1>
+        <h1>Isekai</h1>
         <div className="HomeCategories">{isekai.map(toLink)}</div>
 
-        <h1>Shoujo Anime</h1>
+        <h1>Shoujo</h1>
         <div className="HomeCategories">{shoujo.map(toLink)}</div>
-        <h1>Shounen Anime</h1>
+        <h1>Shounen</h1>
         <div className="HomeCategories">{shounen.map(toLink)}</div>
 
         <h1>Horror</h1>
