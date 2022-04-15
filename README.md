@@ -16,24 +16,17 @@ User Stories
 
 Client / Frontend
 React Router Routes (React App)
- <Routes>
-    •         <Route element={<LayoutComponent />}> //Navbar.
-    •           <Route path="/" element={<Login />} /> //Show Signup and Login Form.
-    •           <Route path="/home"> //After Login Shows all the categories of Anime.
-    •             <Route index element={<Home />} />
-    •             <Route path=":id" element={<DetailAnimePage />} /> //When an Anime in Home is clicked, renders a page with all the Anime Dtails
-    •             <Route
-    •               path="SearchResult"
-    • element={<SearchResultPage searchResult={searchResult} />} //In the search bar you can search an anime you would like to retrieve informations about. It renders the Search Result Page, in which you can see all the Anime of your query.
-    •             />
-    •           </Route>
-    •           <Route path="/login" element={<Login />} />
-    •           <Route path="/signup" element={<SignUp />} />
-    •           <Route path="/profile" element={<Profile />} /> // Shows the Users Profile.
-    •           <Route path="/showfavoriteAnimes" element={<Favorites />} /> // Shows the Anime that the User added to his favourites.
-    • <Route path="*" element={<Custom404Page />} />
-    •         </Route>
-      </Routes>
+ 
+    •LayoutComponent => //Navbar.
+    •Login  => //Show Signup and Login Form.
+    •Home => //After Login Shows all the categories of Anime.
+    •DetailAnimePage => //When an Anime in Home is clicked, renders a page with all the Anime Dtails
+    •SearchResult" => //In the search bar you can search an anime you would like to retrieve informations about.
+    •SearchResultPage => //It renders the Search Result Page, in which you can see all the Anime of your query.
+    •Profile => //Shows the Users Profile.
+    •ShowfavoriteAnimes => //Shows the Anime that the User added to his favourites.
+    •Custom404Page => //Shows a custom error page.
+
 
 Components
 
