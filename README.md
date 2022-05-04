@@ -1,4 +1,6 @@
 # Fanime
+Final Project made by Nicolò Pagliarani and Adryan Cadet during the Ironhack Web Development Bootcamp.
+
 Description
 This is a website in which the user can retrieve all the informations about an anime. He can add Anime to his favourites list, remove them, leave a comment below the anime detail page.
 
